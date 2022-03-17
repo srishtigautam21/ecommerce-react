@@ -1,5 +1,6 @@
-import { CartIcon } from "../../Assets/Svg/allsvg";
+import { CartIcon, HeartIcon, UserIcon } from "../../Assets/Svg/allsvg";
 import "./navbar.css";
+import Logo from "../../Assets/Svg/logo.svg";
 
 const Navbar = () => {
   return (
@@ -9,7 +10,7 @@ const Navbar = () => {
           <a className='component-libraryl-link' href='#'>
             nurish
           </a>
-          <img src='/Assets/logo.svg' alt='logo' />
+          <img src={Logo} alt='logo' />
         </div>
         <div className='search-bar'>
           <input className='input ecom-input' placeholder='Type to search' />
@@ -29,12 +30,12 @@ const Navbar = () => {
               Products
             </a>
           </li>
-          <NavLinkItems text='Cart' svg={<CartIcon className='nav-icons' />} />
+          <NavLinkItems text='Cart' svg={<CartIcon className=' nav-icons' />} />
           <NavLinkItems
             text='WishList'
-            svg={<CartIcon className='nav-icons' />}
+            svg={<HeartIcon className='nav-icons' />}
           />
-          <NavLinkItems text='Login' svg={<CartIcon className='nav-icons' />} />
+          <NavLinkItems text='Login' svg={<UserIcon className='nav-icons' />} />
         </ul>
       </nav>
     </div>
@@ -45,7 +46,7 @@ export { Navbar };
 const NavLinkItems = (props) => {
   return (
     <li className='list-style icons-alignment'>
-      <a className='link ecom-link-color' href='/Pages/LoginPage/login.html'>
+      <a className=' link ecom-link-color' href='/Pages/LoginPage/login.html'>
         {props.svg}
         <p>{props.text}</p>
       </a>

@@ -1,0 +1,35 @@
+.image-wrapper {
+  overflow: hidden;
+  max-height: 60rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.large-img {
+  opacity: 7;
+  transition: all 1s ease-in-out;
+  transform: scale(1);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.ecom-text-overlay {
+  background-color: transparent;
+  position: absolute;
+  top: 33rem;
+  left: 33rem;
+}
+.lg-header-color {
+  color: var(--COLOR-BLACK);
+}
+.md-font {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-left: 1.5rem;
+  letter-spacing: 1px;
+}
+.button-overlay {
+  background-color: var(--COLOR-PRIMARY);
+  top: 44rem;
+  left: 50rem;
+}
