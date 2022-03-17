@@ -1,15 +1,16 @@
 import { CartIcon, HeartIcon, UserIcon } from "../../Assets/Svg/allsvg";
 import "./navbar.css";
 import Logo from "../../Assets/Svg/logo.svg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
       <nav className='nav-component nav-padding'>
         <div className='content-header'>
-          <a className='component-libraryl-link' href='#'>
+          <Link className='component-libraryl-link' to='/'>
             nurish
-          </a>
+          </Link>
           <img src={Logo} alt='logo' />
         </div>
         <div className='search-bar'>
@@ -18,24 +19,47 @@ const Navbar = () => {
         </div>
         <ul className='nav-list-items-flex'>
           <li className='list-style link-alignment home-alignment'>
-            <a className='link ecom-link-color' href='#'>
+            <Link className='link ecom-link-color' to='/'>
               Home
-            </a>
+            </Link>
           </li>
           <li className='list-style link-alignment'>
-            <a
-              className='link ecom-link-color'
-              href='/Pages/ProductPage/product.html'
-            >
+            <Link className='link ecom-link-color' to='/products'>
               Products
-            </a>
+            </Link>
           </li>
-          <NavLinkItems text='Cart' svg={<CartIcon className=' nav-icons' />} />
+          {/* <NavLinkItems
+            text='Cart'
+            svg={<CartIcon className=' nav-icons' />}
+            nxtPage='/products'
+          />
           <NavLinkItems
             text='WishList'
-            svg={<HeartIcon className='nav-icons' />}
+            svg={<HeartIcon className='nav-icons' nxtPage='/products' />}
           />
-          <NavLinkItems text='Login' svg={<UserIcon className='nav-icons' />} />
+          <NavLinkItems
+            text='Login'
+            svg={<UserIcon className='nav-icons' />}
+            nxtPage='/products'
+          /> */}
+          <li class='list-style icons-alignment'>
+            <Link class='link ecom-link-color' to='/products'>
+              <CartIcon className=' nav-icons' />
+              <p>Cart</p>
+            </Link>
+          </li>
+          <li class='list-style icons-alignment'>
+            <Link class='link ecom-link-color' to='/products'>
+              <HeartIcon className='nav-icons' />
+              <p>Wishlist</p>
+            </Link>
+          </li>
+          <li class='list-style icons-alignment'>
+            <a class='link ecom-link-color' href='/Pages/LoginPage/login.html'>
+              <UserIcon className='nav-icons' />
+              <p>Login</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -43,13 +67,16 @@ const Navbar = () => {
 };
 export { Navbar };
 
-const NavLinkItems = (props) => {
-  return (
-    <li className='list-style icons-alignment'>
-      <a className=' link ecom-link-color' href='/Pages/LoginPage/login.html'>
-        {props.svg}
-        <p>{props.text}</p>
-      </a>
-    </li>
-  );
-};
+// const NavLinkItems = (props) => {
+//   console.log(props.nxtPage);
+//   return (
+//     <li className='list-style icons-alignment'>
+//       <Link className=' link ecom-link-color' to={props.nxtPage}>
+//         <>
+//           {props.svg}
+//           <p>{props.text}</p>
+//         </>
+//       </Link>
+//     </li>
+//   );
+// };
