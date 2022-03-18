@@ -1,5 +1,5 @@
 import "./App.css";
-import { Navbar, Footer } from "./component";
+import { Navbar, Footer, CardProvider } from "./component";
 import { HomePage, ProductPage } from "./pages";
 import { Routes, Route } from "react-router-dom";
 

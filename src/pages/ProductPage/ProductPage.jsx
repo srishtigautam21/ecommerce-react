@@ -1,4 +1,10 @@
+import { Card } from "../../component/Card/Card";
+
 const ProductPage = () => {
-  return <div>This is product page</div>;
+  return (
+    <>
+      <Card />
+    </>
+  );
 };
 export { ProductPage };
