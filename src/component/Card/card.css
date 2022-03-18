@@ -1,3 +1,38 @@
-/* .card-display {
+.overline-text {
+  text-decoration: line-through;
+}
+.sale-perct {
+  color: var(--ALERT-ERROR-COLOR);
+}
+.product-container {
   display: flex;
-} */
+  margin: 3.5rem 2rem 2rem 1rem;
+}
+.xs-margin {
+  margin-right: 2px;
+}
+.rating-xs-margin {
+  margin-top: 4px;
+}
+.card-width {
+  min-width: 25rem;
+}
+.ecom-card-button {
+  width: 23rem;
+  height: 3.5rem;
+  margin-right: 0;
+}
+.overlay-text-alignment {
+  left: 6.5rem;
+}
+.bottom-margin {
+  margin-bottom: 3rem;
+}
+.md-margin {
+  margin: 5px 2rem 0 0;
+  cursor: pointer;
+}
+.margin {
+  margin-right: 1rem;
+  cursor: pointer;
+}
