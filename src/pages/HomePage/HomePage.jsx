@@ -26,7 +26,6 @@ const HomePage = () => {
       <h1 className='featured-header'>Featured Categories</h1>
       <div className='featured-categories'>
         <FeaturedCategory text='Dried Seeds' image={SeedImage} />
-
         <FeaturedCategory text='Fruits' image={FruitImage} />
         <FeaturedCategory text='Nuts' image={NutsImage} />
         <FeaturedCategory text='Grains' image={GrainsImage} />
