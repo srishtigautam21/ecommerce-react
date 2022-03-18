@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem 0 2rem 0;
+  box-shadow: 0px 2px 8px var(--BOX-SHADOW);
+}
+.bottom-margin {
+  margin-bottom: 3rem;
+}
+.md-margin {
+  margin: 5px 2rem 0 0;
+  cursor: pointer;
+}
+.margin-bottom {
+  margin-bottom: 8px;
+}
+.margin-top {
+  margin-top: 1rem;
+}

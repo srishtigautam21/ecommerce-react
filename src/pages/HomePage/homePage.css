@@ -1,0 +1,72 @@
+/* CSS for hero image */
+.image-wrapper {
+  overflow: hidden;
+  max-height: 60rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.large-img {
+  opacity: 7;
+  transition: all 1s ease-in-out;
+  transform: scale(1);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.ecom-text-overlay {
+  background-color: transparent;
+  position: absolute;
+  top: 33rem;
+  left: 33rem;
+}
+.lg-header-color {
+  color: var(--COLOR-BLACK);
+}
+.md-font {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-left: 1.5rem;
+  letter-spacing: 1px;
+}
+.button-overlay {
+  background-color: var(--COLOR-PRIMARY);
+  top: 44rem;
+  left: 50rem;
+}
+/* CSS for featured category */
+.featured-categories {
+  display: flex;
+  column-gap: 2.5rem;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1.8rem 3rem 4rem 3rem;
+}
+.featured-categories-image {
+  transition: all 1s ease-in-out;
+  transform: scale(1);
+}
+.category-positioning {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(234, 234, 240, 0.6);
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.square-image:hover {
+  transition: all 0.3s ease;
+  transform: scale(1.03);
+}
+.xs-padding {
+  padding-bottom: 0;
+}
+.featured-header {
+  margin: 4rem 0 2rem 0;
+  text-align: center;
+}

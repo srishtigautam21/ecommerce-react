@@ -1,0 +1,24 @@
+.nav-padding {
+  padding: 0 2rem 0 2rem;
+}
+.icons-alignment {
+  margin: 2.5rem 2rem 0 0;
+  text-decoration: none;
+}
+.link-alignment {
+  margin: 4.9rem 7rem 0 0;
+}
+.ecom-link-color {
+  color: var(--COLOR-SOCIAL-ICON);
+}
+.home-alignment {
+  margin: 4.9rem 2rem 0 0;
+}
+.ecom-input {
+  max-width: 25rem;
+  width: 100%;
+}
+.link:hover {
+  cursor: pointer;
+  color: var(--PRIMARY-HOVER);
+}
