@@ -1,4 +1,5 @@
 import "./homePage.css";
+import { Link } from "react-router-dom";
 import HeroImage from "../../Assets/Images/home-page-photo.jpg";
 import SeedImage from "../../Assets/Images/seeds.jpg";
 import FruitImage from "../../Assets/Images/mango.jpg";
@@ -18,9 +19,9 @@ const HomePage = () => {
           Start your journey towards healthy life with these organic foods
         </div>
       </div>
-      <a href='/Pages/ProductPage/product.html'>
+      <Link to='/products'>
         <button className='button overlay-text button-overlay'>SHOP NOW</button>
-      </a>
+      </Link>
       {/* Featured category section */}
       <h1 className='featured-header'>Featured Categories</h1>
       <div className='featured-categories'>
