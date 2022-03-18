@@ -42,20 +42,23 @@ const Navbar = () => {
             svg={<UserIcon className='nav-icons' />}
             nxtPage='/products'
           /> */}
-          <li class='list-style icons-alignment'>
-            <Link class='link ecom-link-color' to='/products'>
+          <li className='list-style icons-alignment'>
+            <Link className='link ecom-link-color' to='/products'>
               <CartIcon className=' nav-icons' />
               <p>Cart</p>
             </Link>
           </li>
-          <li class='list-style icons-alignment'>
-            <Link class='link ecom-link-color' to='/products'>
+          <li className='list-style icons-alignment'>
+            <Link className='link ecom-link-color' to='/products'>
               <HeartIcon className='nav-icons' />
               <p>Wishlist</p>
             </Link>
           </li>
-          <li class='list-style icons-alignment'>
-            <a class='link ecom-link-color' href='/Pages/LoginPage/login.html'>
+          <li className='list-style icons-alignment'>
+            <a
+              className='link ecom-link-color'
+              href='/Pages/LoginPage/login.html'
+            >
               <UserIcon className='nav-icons' />
               <p>Login</p>
             </a>
