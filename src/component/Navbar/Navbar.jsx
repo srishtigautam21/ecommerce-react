@@ -55,13 +55,10 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='list-style icons-alignment'>
-            <a
-              className='link ecom-link-color'
-              href='/Pages/LoginPage/login.html'
-            >
+            <Link className='link ecom-link-color' to='/products'>
               <UserIcon className='nav-icons' />
               <p>Login</p>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
