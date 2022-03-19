@@ -1,5 +1,4 @@
-import { Card, ProductsFilter } from "../../component";
-import { useCard } from "../../component/Context/CardContext/CardContext";
+import { Card, ProductsFilter, useCard } from "../../component";
 import "./productPage.css";
 
 const ProductPage = () => {
