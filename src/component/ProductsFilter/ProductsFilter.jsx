@@ -9,11 +9,11 @@ const ProductsFilter = () => {
       </div>
       <h3>Price</h3>
       <div className='filter'>
-        <label htmlFor='radio-1'>
+        <label htmlFor='lowToHigh'>
           <input
             className='margin'
-            id='radio-1'
-            name='radio'
+            id='lowToHigh'
+            name='radio-lowToHigh'
             type='radio'
             onClick={() =>
               dispatch({ type: "SORTING", payload: "low to high" })
@@ -21,11 +21,11 @@ const ProductsFilter = () => {
           />
           Low to High
         </label>
-        <label htmlFor='radio-2'>
+        <label htmlFor='highToLow'>
           <input
             className='margin'
-            id='radio-2'
-            name='radio'
+            id='highToLow'
+            name='radio-highToLow'
             type='radio'
             onClick={() =>
               dispatch({ type: "SORTING", payload: "high to low" })
@@ -36,51 +36,51 @@ const ProductsFilter = () => {
       </div>
       <h3>Category</h3>
       <div className='filter'>
-        <label htmlFor='checkbox-1'>
+        <label htmlFor='grains'>
           <input
             className='margin'
-            id='checkbox-1'
-            name='checkbox'
+            id='grains'
+            name='checkbox-grains'
             type='checkbox'
             onClick={() => dispatch({ type: "GRAINS" })}
           />
           Grains
         </label>
-        <label htmlFor='checkbox-2'>
+        <label htmlFor='nuts'>
           <input
             className='margin'
-            id='checkbox-2'
-            name='checkbox'
+            id='nuts'
+            name='checkbox-nuts'
             type='checkbox'
             onClick={() => dispatch({ type: "NUTS" })}
           />
           Nuts
         </label>
-        <label htmlFor='checkbox-3'>
+        <label htmlFor='seeds'>
           <input
             className='margin'
-            id='checkbox-3'
-            name='checkbox'
+            id='seeds'
+            name='checkbox-seeds'
             type='checkbox'
             onClick={() => dispatch({ type: "SEEDS" })}
           />
           Seeds
         </label>
-        <label htmlFor='checkbox-4'>
+        <label htmlFor='fruits'>
           <input
             className='margin'
-            id='checkbox-4'
-            name='checkbox'
+            id='fruits'
+            name='checkbox-fruits'
             type='checkbox'
             onClick={() => dispatch({ type: "FRUITS" })}
           />
           Fruits
         </label>
-        <label htmlFor='checkbox-5'>
+        <label htmlFor='vegetables'>
           <input
             className='margin'
-            id='checkbox-5'
-            name='checkbox'
+            id='vegetables'
+            name='checkbox-vegetables'
             type='checkbox'
             onClick={() => dispatch({ type: "VEGETABLES" })}
           />
