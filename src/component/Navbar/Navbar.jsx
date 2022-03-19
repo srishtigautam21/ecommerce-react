@@ -49,7 +49,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='list-style icons-alignment'>
-            <Link className='link ecom-link-color' to='/products'>
+            <Link className='link ecom-link-color' to='/wishlist'>
               <HeartIcon className='nav-icons' />
               <p>Wishlist</p>
             </Link>

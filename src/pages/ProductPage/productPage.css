@@ -1,0 +1,11 @@
+.position-fixed {
+  width: 20rem;
+  height: 100%;
+  margin: 2.5rem 0 0 3rem;
+}
+.sidebar-flex {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  flex: 0 0 auto;
+}

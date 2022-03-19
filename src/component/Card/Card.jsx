@@ -20,11 +20,11 @@ const Card = ({
     <div
       className={
         isOutOfStock
-          ? `text-overlay-card card-width card-container  bottom-margin`
-          : `card-container  bottom-margin`
+          ? `text-overlay-card card-width card-container  bottom-margin `
+          : `card-container  bottom-margin `
       }
     >
-      <div className='parent-positioning'>
+      <div className='parent-positioning '>
         <img src={image} alt='quinoa-image'></img>
         <div className='inside-container '>
           <h3>{name}</h3>
