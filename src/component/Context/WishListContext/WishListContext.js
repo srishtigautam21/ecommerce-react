@@ -3,23 +3,35 @@ import { useContext, useState, createContext } from "react";
 const WishListContext = createContext({});
 
 const WishListProvider = ({ children }) => {
-  //   const { products } = useCard();
   const [wishlist, setWishList] = useState({
     wishlistitem: [],
     wishListCount: 0,
+    heartcolor: false,
   });
-  //   const [wishListCount, setwishListCount] = useState(0);
+
   const wishListHandler = (item) => {
-    // setwishListCount((quantity) => quantity + 1);
-    setWishList((prev) => ({
-      ...prev,
-      wishListCount: prev.wishListCount + 1,
-      wishlistitem: [...prev.wishlistitem, item],
-    }));
+    setWishList((prev) => {
+      const index = prev.wishlistitem.findIndex((i) => i._id === item._id);
+      return index === -1 //If item is not in wishlist
+        ? {
+            ...prev,
+            wishListCount: prev.wishListCount + 1,
+            wishlistitem: [...prev.wishlistitem, item],
+            heartcolor: true,
+          }
+        : {
+            ...prev,
+            wishListCount: prev.wishListCount - 1,
+            wishlistitem: prev.wishlistitem.filter((i) => i._id !== item._id),
+            heartcolor: false,
+          }; //Will remove that item from wishlist which would already be in wishlist cart
+    });
   };
-  //   console.log(wishlist.length);
+
   return (
-    <WishListContext.Provider value={{ wishListHandler, wishlist }}>
+    <WishListContext.Provider
+      value={{ wishListHandler, wishlist, setWishList }}
+    >
       {children}
     </WishListContext.Provider>
   );

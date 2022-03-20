@@ -3,14 +3,12 @@ import { useWishList } from "../../component";
 import { WishListCard } from "../../component";
 
 const WishList = () => {
-  const { wishlist } = useWishList();
+  const { wishlist, setWishList } = useWishList();
+
   return (
-    <>
-      <WishListCard wishlist={wishlist} />
-      {/* {wishlist.wishlistitem.map((wishlist) => (
-        <WishListCard wishlist={wishlist} />
-      ))} */}
-    </>
+    <div>
+      <WishListCard wishlist={wishlist} setWishList={setWishList} />
+    </div>
   );
 };
 

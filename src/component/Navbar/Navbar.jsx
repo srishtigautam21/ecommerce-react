@@ -46,9 +46,9 @@ const Navbar = () => {
           /> */}
           <li className='list-style icons-alignment'>
             <Link className='link ecom-link-color' to='/products'>
-              <div class='ecom-badge-wrapper'>
+              <div className='ecom-badge-wrapper'>
                 <CartIcon className=' nav-icons' />
-                <div class='badge icon-over-badge'>0</div>
+                <div className='badge icon-over-badge'>0</div>
               </div>
               {/* <CartIcon className=' nav-icons' /> */}
               {/* <p>Cart</p> */}
@@ -56,9 +56,9 @@ const Navbar = () => {
           </li>
           <li className='list-style icons-alignment'>
             <Link className='link ecom-link-color' to='/wishlist'>
-              <div class='ecom-badge-wrapper'>
+              <div className='ecom-badge-wrapper'>
                 <HeartIcon className='nav-icons' />
-                <div class='badge icon-over-badge'>
+                <div className='badge icon-over-badge'>
                   {wishlist.wishListCount}
                 </div>
               </div>

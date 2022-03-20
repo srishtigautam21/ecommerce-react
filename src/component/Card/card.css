@@ -36,3 +36,6 @@
   margin-right: 1rem;
   cursor: pointer;
 }
+.red-heart-color {
+  color: var(--ALERT-ERROR-COLOR);
+}
