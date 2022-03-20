@@ -50,8 +50,6 @@ const Navbar = () => {
                 <CartIcon className=' nav-icons' />
                 <div className='badge icon-over-badge'>0</div>
               </div>
-              {/* <CartIcon className=' nav-icons' /> */}
-              {/* <p>Cart</p> */}
             </Link>
           </li>
           <li className='list-style icons-alignment'>
@@ -62,14 +60,11 @@ const Navbar = () => {
                   {wishlist.wishListCount}
                 </div>
               </div>
-              {/* <HeartIcon className='nav-icons' /> */}
-              {/* <p>Wishlist</p> */}
             </Link>
           </li>
           <li className='list-style icons-alignment lg-margin-top'>
             <Link className='link ecom-link-color' to='/products'>
               <UserIcon className='nav-icons' />
-              {/* <p>Login</p> */}
             </Link>
           </li>
         </ul>
