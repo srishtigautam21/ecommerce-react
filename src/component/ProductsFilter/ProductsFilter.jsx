@@ -15,9 +15,6 @@ const ProductsFilter = () => {
             id='lowToHigh'
             name='radio-lowToHigh'
             type='radio'
-            // onClick={() =>
-            //   dispatch({ type: "SORTING", payload: "low to high" })
-            // }
           />
           Low to High
         </label>
@@ -27,9 +24,6 @@ const ProductsFilter = () => {
             id='highToLow'
             name='radio-highToLow'
             type='radio'
-            // onClick={() =>
-            //   dispatch({ type: "SORTING", payload: "high to low" })
-            // }
           />
           High to Low
         </label>
@@ -42,7 +36,6 @@ const ProductsFilter = () => {
             id='grains'
             name='checkbox-grains'
             type='checkbox'
-            // onClick={() => dispatch({ type: "GRAINS" })}
           />
           Grains
         </label>
@@ -52,7 +45,6 @@ const ProductsFilter = () => {
             id='nuts'
             name='checkbox-nuts'
             type='checkbox'
-            // onClick={() => dispatch({ type: "NUTS" })}
           />
           Nuts
         </label>
@@ -62,7 +54,6 @@ const ProductsFilter = () => {
             id='seeds'
             name='checkbox-seeds'
             type='checkbox'
-            // onClick={() => dispatch({ type: "SEEDS" })}
           />
           Seeds
         </label>
@@ -72,7 +63,6 @@ const ProductsFilter = () => {
             id='fruits'
             name='checkbox-fruits'
             type='checkbox'
-            // onClick={() => dispatch({ type: "FRUITS" })}
           />
           Fruits
         </label>
@@ -82,7 +72,6 @@ const ProductsFilter = () => {
             id='vegetables'
             name='checkbox-vegetables'
             type='checkbox'
-            // onClick={() => dispatch({ type: "VEGETABLES" })}
           />
           Vegetables
         </label>
@@ -106,7 +95,6 @@ const ProductsFilter = () => {
           type='range'
           min='1'
           max='5'
-          // value='3'
         ></input>
       </label>
     </>
