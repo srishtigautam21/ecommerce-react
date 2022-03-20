@@ -27,10 +27,21 @@ const WishListProvider = ({ children }) => {
           }; //Will remove that item from wishlist which would already be in wishlist cart
     });
   };
+  const removeFromWishListHandler = (wishListCard) => {
+    setWishList((prev) => {
+      return {
+        ...prev,
+        wishListCount: prev.wishListCount - 1,
+        wishlistitem: prev.wishlistitem.filter(
+          (i) => i._id !== wishListCard._id
+        ),
+      };
+    });
+  };
 
   return (
     <WishListContext.Provider
-      value={{ wishListHandler, wishlist, setWishList }}
+      value={{ wishListHandler, wishlist, removeFromWishListHandler }}
     >
       {children}
     </WishListContext.Provider>
