@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { products } from "../../../backend/db/products";
 import axios from "axios";
 
 const CardContext = createContext({});

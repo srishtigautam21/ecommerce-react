@@ -3,5 +3,20 @@ import { Footer } from "./Footer/Footer";
 import { Card } from "./Card/Card";
 import { ProductsFilter } from "./ProductsFilter/ProductsFilter";
 import { CardProvider, useCard } from "./Context/CardContext/CardContext";
+import {
+  WishListProvider,
+  useWishList,
+} from "./Context/WishListContext/WishListContext";
+import { WishListCard } from "./Card/WishListCard";
 
-export { Navbar, Footer, CardProvider, ProductsFilter, Card, useCard };
+export {
+  Navbar,
+  Footer,
+  CardProvider,
+  ProductsFilter,
+  Card,
+  useCard,
+  WishListProvider,
+  useWishList,
+  WishListCard,
+};

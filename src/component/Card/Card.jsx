@@ -1,7 +1,9 @@
+import { useWishList } from "../index";
 import "./card.css";
 
-const Card = ({
-  product: {
+const Card = ({ product }) => {
+  const { wishListHandler } = useWishList();
+  const {
     _id,
     name,
     price,
@@ -14,8 +16,7 @@ const Card = ({
     sale,
     isOutOfStock,
     newItem = false,
-  },
-}) => {
+  } = product;
   return (
     <div
       className={
@@ -25,7 +26,7 @@ const Card = ({
       }
     >
       <div className='parent-positioning '>
-        <img src={image} alt='quinoa-image'></img>
+        <img src={image} alt={name}></img>
         <div className='inside-container '>
           <h3>{name}</h3>
           <span className='card-content'>{categoryName}</span>
@@ -56,7 +57,11 @@ const Card = ({
           <span className='badge-overlay'>
             {newItem === true ? "New" : sale === true ? "Sale" : null}
           </span>
-          <i className='fa fa-heart-o icon-btn icon-size icon-overlay'></i>
+
+          <i
+            onClick={() => wishListHandler(product)}
+            className='fa fa-heart-o icon-btn icon-size icon-overlay'
+          ></i>
         </div>
       </div>
     </div>

@@ -1,0 +1,6 @@
+.wishlist-container {
+  margin: 1.5rem 3rem 1rem 3rem;
+}
+.contained {
+  color: var(--ALERT-ERROR-COLOR);
+}
