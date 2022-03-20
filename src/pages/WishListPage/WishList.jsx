@@ -1,7 +1,15 @@
 import "./wishList.css";
+import { useWishList } from "../../component";
+import { WishListCard } from "../../component";
 
 const WishList = () => {
-  return <div>This is wishlist</div>;
+  const { wishlist } = useWishList();
+
+  return (
+    <div>
+      <WishListCard wishlist={wishlist} />
+    </div>
+  );
 };
 
 export { WishList };

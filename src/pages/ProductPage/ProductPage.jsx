@@ -5,7 +5,7 @@ const ProductPage = () => {
   const { products } = useCard();
   return (
     <div className='product-container '>
-      <aside class='position-fixed sidebar-flex'>
+      <aside className='position-fixed sidebar-flex'>
         <ProductsFilter />
       </aside>
       <div className='vertical-cards'>

@@ -1,0 +1,26 @@
+.h-100 {
+  min-height: 100vh;
+}
+.w-100 {
+  width: 100%;
+}
+.wishlistCard-container {
+  margin: 1.5rem 3rem 1rem 3rem;
+}
+.contained {
+  color: var(--ALERT-ERROR-COLOR);
+}
+.vertical-cards {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 3rem;
+}
+.cart-page-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+}
+.cart-page-header {
+  margin: 4rem 0 2rem 0;
+  text-align: center;
+}

@@ -2,7 +2,7 @@
   padding: 0 2rem 0 2rem;
 }
 .icons-alignment {
-  margin: 2.5rem 2rem 0 0;
+  margin: 2.5rem 3rem 0 0;
   text-decoration: none;
 }
 .link-alignment {
@@ -21,4 +21,15 @@
 .link:hover {
   cursor: pointer;
   color: var(--PRIMARY-HOVER);
+}
+.lg-margin-top {
+  margin-top: 4.5rem;
+}
+/* CSS for badge alignment */
+.icon-over-badge {
+  left: 2rem;
+  bottom: 1.5rem;
+}
+.ecom-badge-wrapper {
+  position: relative;
 }

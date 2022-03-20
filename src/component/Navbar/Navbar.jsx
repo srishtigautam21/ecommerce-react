@@ -2,8 +2,10 @@ import { CartIcon, HeartIcon, UserIcon } from "../../Assets/Svg/allsvg";
 import "./navbar.css";
 import Logo from "../../Assets/Svg/logo.svg";
 import { Link } from "react-router-dom";
+import { useWishList } from "../index";
 
 const Navbar = () => {
+  const { wishlist } = useWishList();
   return (
     <div>
       <nav className='nav-component nav-padding'>
@@ -44,20 +46,25 @@ const Navbar = () => {
           /> */}
           <li className='list-style icons-alignment'>
             <Link className='link ecom-link-color' to='/products'>
-              <CartIcon className=' nav-icons' />
-              <p>Cart</p>
+              <div className='ecom-badge-wrapper'>
+                <CartIcon className=' nav-icons' />
+                <div className='badge icon-over-badge'>0</div>
+              </div>
             </Link>
           </li>
           <li className='list-style icons-alignment'>
             <Link className='link ecom-link-color' to='/wishlist'>
-              <HeartIcon className='nav-icons' />
-              <p>Wishlist</p>
+              <div className='ecom-badge-wrapper'>
+                <HeartIcon className='nav-icons' />
+                <div className='badge icon-over-badge'>
+                  {wishlist.wishListCount}
+                </div>
+              </div>
             </Link>
           </li>
-          <li className='list-style icons-alignment'>
+          <li className='list-style icons-alignment lg-margin-top'>
             <Link className='link ecom-link-color' to='/products'>
               <UserIcon className='nav-icons' />
-              <p>Login</p>
             </Link>
           </li>
         </ul>
