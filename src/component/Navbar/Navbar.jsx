@@ -45,7 +45,7 @@ const Navbar = () => {
             nxtPage='/products'
           /> */}
           <li className='list-style icons-alignment'>
-            <Link className='link ecom-link-color' to='/products'>
+            <Link className='link ecom-link-color' to='/cart'>
               <div className='ecom-badge-wrapper'>
                 <CartIcon className=' nav-icons' />
                 <div className='badge icon-over-badge'>0</div>

@@ -8,6 +8,7 @@ import {
   useWishList,
 } from "./Context/WishListContext/WishListContext";
 import { WishListCard } from "./Card/WishListCard";
+import { CartPageCard } from "./Card/HorizontalCard";
 
 export {
   Navbar,
@@ -19,4 +20,5 @@ export {
   WishListProvider,
   useWishList,
   WishListCard,
+  CartPageCard,
 };
