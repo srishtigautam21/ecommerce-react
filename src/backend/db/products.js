@@ -16,6 +16,7 @@ export const products = [
     ratings: 4,
     newItem: true,
     isOutOfStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -26,6 +27,7 @@ export const products = [
     categoryName: "Nutritional Nuts",
     ratings: 4,
     isOutOfStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -40,6 +42,7 @@ export const products = [
     ratings: 3,
     sale: true,
     isOutOfStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -50,6 +53,7 @@ export const products = [
     ratings: 4,
     newItem: true,
     isOutOfStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -60,6 +64,7 @@ export const products = [
     categoryName: "Super Seeds",
     ratings: 3,
     isOutOfStock: true,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -74,5 +79,6 @@ export const products = [
     ratings: 4,
     sale: true,
     isOutOfStock: false,
+    qty: 1,
   },
 ];

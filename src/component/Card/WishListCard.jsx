@@ -1,9 +1,11 @@
 import "./wishListCard.css";
 import "./card.css";
-import "../index";
-import { useWishList } from "../Context/WishListContext/WishListContext";
+// import "../index";
+// import { useWishList } from "../Context/WishListContext/WishListContext";
+import { useWishList, useCart } from "../index";
 
 const WishListCard = ({ wishlist }) => {
+  // const { dispatch } = useCart();
   const { wishlistitem, wishListCount } = wishlist;
   const { removeFromWishListHandler } = useWishList();
 
@@ -56,7 +58,15 @@ const WishListCard = ({ wishlist }) => {
                         <span className='fa fa-star checked'></span>
                         <span className='xs-margin'>|</span>5
                       </div>
-                      <button className='button card-button ecom-card-button'>
+                      <button
+                        onClick={() =>
+                          dispatch({
+                            type: "MOVE_TO_CART",
+                            productCard: item,
+                          })
+                        }
+                        className='button card-button ecom-card-button'
+                      >
                         Move to Cart
                       </button>
                       <span className='badge-overlay'>

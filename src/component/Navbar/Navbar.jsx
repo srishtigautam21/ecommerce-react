@@ -2,10 +2,17 @@ import { CartIcon, HeartIcon, UserIcon } from "../../Assets/Svg/allsvg";
 import "./navbar.css";
 import Logo from "../../Assets/Svg/logo.svg";
 import { Link } from "react-router-dom";
-import { useWishList } from "../index";
+import { useWishList, useCart } from "../index";
 
 const Navbar = () => {
   const { wishlist } = useWishList();
+  const { state } = useCart();
+  const { cartlistitem } = state;
+
+  const totalCartQuantity = cartlistitem.reduce(
+    (acc, prod) => acc + prod.cartqty,
+    0
+  );
   return (
     <div>
       <nav className='nav-component nav-padding'>
@@ -48,7 +55,7 @@ const Navbar = () => {
             <Link className='link ecom-link-color' to='/cart'>
               <div className='ecom-badge-wrapper'>
                 <CartIcon className=' nav-icons' />
-                <div className='badge icon-over-badge'>0</div>
+                <div className='badge icon-over-badge'>{totalCartQuantity}</div>
               </div>
             </Link>
           </li>
