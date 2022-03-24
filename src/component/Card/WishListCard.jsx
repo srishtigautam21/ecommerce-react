@@ -1,7 +1,6 @@
 import "./wishListCard.css";
 import "./card.css";
-// import "../index";
-// import { useWishList } from "../Context/WishListContext/WishListContext";
+
 import { useWishList, useCart } from "../index";
 
 const WishListCard = ({ wishlist }) => {
@@ -66,12 +65,6 @@ const WishListCard = ({ wishlist }) => {
                         <span className='xs-margin'>|</span>5
                       </div>
                       <button
-                        // onClick={() =>
-                        //   dispatch({
-                        //     type: "MOVE_TO_CART",
-                        //     productCard: item,
-                        //   })
-                        // }
                         className='button card-button ecom-card-button'
                         onClick={() => moveToCartHandler(item)}
                       >

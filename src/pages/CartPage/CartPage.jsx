@@ -3,7 +3,7 @@ import { CartPageCard, useCart, PriceCard } from "../../component";
 const CartPage = () => {
   const { state, dispatch } = useCart();
   const { cartlistitem } = state;
-  // console.log(cartlistitem);
+
   return (
     <>
       <h1 className='cart-page-header'>My Cart</h1>
@@ -25,12 +25,6 @@ const CartPage = () => {
         </div>
         {state.cartlistitem.length > 0 && <PriceCard state={state} />}
       </main>
-      {/* {
-        state.cartlistitem.map((item) => {
-          return <CartPageCard state={state} dispatch={dispatch} />;
-        })
-       
-      } */}
     </>
   );
 };

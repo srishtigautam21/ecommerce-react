@@ -8,7 +8,7 @@ const PriceCard = ({ state }) => {
     discount: 0,
     priceAfterDiscount: 0,
   };
-  // console.log(cartlistitem.price);
+
   const priceCard = cartlistitem.reduce(
     (acc, currCard) => ({
       ...acc,
@@ -18,7 +18,7 @@ const PriceCard = ({ state }) => {
     }),
     initialPriceState
   );
-  // currCard.cartqty * 10
+
   const discountedPriceCard = cartlistitem.reduce(
     (acc, currCard) => ({
       ...acc,
