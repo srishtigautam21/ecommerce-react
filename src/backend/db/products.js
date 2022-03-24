@@ -70,10 +70,10 @@ export const products = [
     _id: uuid(),
 
     name: "Mixed Nuts | (500g)",
-    price: 750,
+    price: 600,
     image: Images.mixedNuts,
     discount: true,
-    priceBeforeDiscount: 600,
+    priceBeforeDiscount: 750,
     discPerc: 20,
     categoryName: "Nutritional Nuts",
     ratings: 4,

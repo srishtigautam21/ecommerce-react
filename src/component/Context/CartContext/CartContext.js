@@ -5,15 +5,13 @@ const CartContext = createContext({});
 
 const CartProvider = ({ children }) => {
   const { setWishList, wishlist } = useWishList();
+
   const cartReducer = (state, action) => {
     switch (action.type) {
       case "ADD_TO_CART":
         const index = state.cartlistitem.findIndex(
-          (i) =>
-            // console.log(i);
-            i._id === action.productCard._id
+          (i) => i._id === action.productCard._id
         );
-        // console.log(state.cartlistitem);
         return index === -1
           ? {
               ...state,
@@ -59,7 +57,6 @@ const CartProvider = ({ children }) => {
           ),
         };
       case "MOVE_TO_CART":
-        // removeFromWishListHandler(action.productCard);
         return {
           ...state,
           cartlistitem: [...state.cartlistitem, action.productCard],
@@ -71,13 +68,6 @@ const CartProvider = ({ children }) => {
             (i) => i._id !== action.productCard._id
           ),
         };
-      // case "MOVE_TO_WISHLIST":
-      //   return {
-      //    setWishList((prev)=>{
-      //      const index=prev.wishlist.findIndex((i)=)
-      //    })
-      //   };
-
       default:
         return state;
     }
@@ -89,6 +79,7 @@ const CartProvider = ({ children }) => {
     productCount: 1,
   };
   const [state, dispatch] = useReducer(cartReducer, cartObj);
+
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}

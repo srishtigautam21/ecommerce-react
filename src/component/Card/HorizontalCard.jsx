@@ -4,6 +4,7 @@ import "./horizontalCard.css";
 const CartPageCard = ({ product, dispatch, state }) => {
   const { cartCount, cartlistitem, productCount } = state;
   const { setWishList, wishlist } = useWishList();
+
   const moveToWishListHandler = (product) => {
     dispatch({ type: "REMOVE_FROM_CART", productCard: product });
     // dispatch({ type: "MOVE_TO_WISHLIST", productCard: product });
@@ -46,13 +47,29 @@ const CartPageCard = ({ product, dispatch, state }) => {
         <img src={image} alt={name} />
         <div className='h-card-inside-content'>
           <h3>{name}</h3>
-          <p className='card-item-cost margin-top'>Rs.{price}</p>
+          <p>
+            <span className='card-item-cost margin-top margin'>Rs.{price}</span>
+            {discount && (
+              <>
+                <span className='overline-text margin'>
+                  Rs.{priceBeforeDiscount}
+                </span>
+                <span className='sale-perct'>{discPerc}% Off</span>
+              </>
+            )}
+          </p>
           <div className='quantity'>
             <p className='quant-font-size'>Quantity</p>
             <div className='plus-minus-button'>
               <button
-                onClick={() =>
-                  dispatch({ type: "DECREMENT", productCard: product })
+                onClick={
+                  cartqty > 0
+                    ? () =>
+                        dispatch({ type: "DECREMENT", productCard: product })
+                    : dispatch({
+                        type: "REMOVE_FROM_CART",
+                        productCard: product,
+                      })
                 }
                 className='q-circle-btn'
               >

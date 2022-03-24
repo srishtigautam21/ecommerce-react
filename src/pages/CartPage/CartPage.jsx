@@ -23,7 +23,7 @@ const CartPage = () => {
             );
           })}
         </div>
-        <PriceCard state={state} />
+        {state.cartlistitem.length > 0 && <PriceCard state={state} />}
       </main>
       {/* {
         state.cartlistitem.map((item) => {
