@@ -1,8 +1,30 @@
+import { useWishList } from "../index";
 import "./horizontalCard.css";
 
 const CartPageCard = ({ product, dispatch, state }) => {
   const { cartCount, cartlistitem, productCount } = state;
-  console.log(cartlistitem);
+  const { setWishList, wishlist } = useWishList();
+  const moveToWishListHandler = (product) => {
+    dispatch({ type: "REMOVE_FROM_CART", productCard: product });
+    // dispatch({ type: "MOVE_TO_WISHLIST", productCard: product });
+    setWishList((prev) => {
+      const index = prev.wishlistitem.findIndex((i) => i._id === product._id);
+      return index === -1 //If item is not in wishlist
+        ? {
+            ...prev,
+            wishListCount: prev.wishListCount + 1,
+            wishlistitem: [...prev.wishlistitem, product],
+          }
+        : {
+            ...prev,
+            wishListCount: prev.wishListCount - 1,
+            wishlistitem: prev.wishlistitem.filter(
+              (i) => i._id !== product._id
+            ),
+          };
+    });
+  };
+
   const {
     _id,
     name,
@@ -29,22 +51,36 @@ const CartPageCard = ({ product, dispatch, state }) => {
             <p className='quant-font-size'>Quantity</p>
             <div className='plus-minus-button'>
               <button
-                onClick={() => dispatch({ type: "DECREMENT", payload: price })}
+                onClick={() =>
+                  dispatch({ type: "DECREMENT", productCard: product })
+                }
                 className='q-circle-btn'
               >
                 <i className='fa fa-minus'></i>
               </button>
               <p className='q-num-box'>{cartqty}</p>
               <button
-                onClick={() => dispatch({ type: "INCREMENT", payload: price })}
+                onClick={() =>
+                  dispatch({ type: "INCREMENT", productCard: product })
+                }
                 className='q-circle-btn'
               >
                 <i className='fa fa-plus'></i>
               </button>
             </div>
           </div>
-          <button className='button cart-btn'>Move to Wishlist</button>
-          <button className='button outline-button cart-btn'>
+          <button
+            className='button cart-btn'
+            onClick={() => moveToWishListHandler(product)}
+          >
+            Move to Wishlist
+          </button>
+          <button
+            className='button outline-button cart-btn'
+            onClick={() =>
+              dispatch({ type: "REMOVE_FROM_CART", productCard: product })
+            }
+          >
             Remove From Cart
           </button>
         </div>

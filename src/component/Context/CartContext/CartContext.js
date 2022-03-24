@@ -4,31 +4,16 @@ import { useWishList } from "../../index";
 const CartContext = createContext({});
 
 const CartProvider = ({ children }) => {
+  const { setWishList, wishlist } = useWishList();
   const cartReducer = (state, action) => {
     switch (action.type) {
-      case "INCREMENT":
-        // const index1 = state.cartlistitem.findIndex(
-        //   (i) => i._id === state.cartlistitem._id
-        // );
-        return {
-          ...state,
-          //   cartCount: state.cartCount + 1,
-          productCount: state.productCount + 1,
-          // totalPrice: state.totalPrice + action.payload * state.productCount,
-        };
-      case "DECREMENT":
-        return {
-          ...state,
-          //   cartCount: state.cartCount - 1,
-          productCount: state.productCount >= 1 ? state.productCount - 1 : null, //TODO:do not let the user go less than 1 product
-          // totalPrice: state.totalPrice - action.payload * state.productCount,
-        };
       case "ADD_TO_CART":
-        const index = state.cartlistitem.findIndex((i) => {
-          console.log(i);
-          return i._id === action.productCard._id;
-        });
-        console.log(state.cartlistitem);
+        const index = state.cartlistitem.findIndex(
+          (i) =>
+            // console.log(i);
+            i._id === action.productCard._id
+        );
+        // console.log(state.cartlistitem);
         return index === -1
           ? {
               ...state,
@@ -37,28 +22,61 @@ const CartProvider = ({ children }) => {
                 ...state.cartlistitem,
                 { ...action.productCard, cartqty: 1 },
               ],
-              // totalPrice: state.totalPrice + action.productPrice,
             }
           : {
               ...state,
-              // productCount: state.productCount + 1,
               cartlistitem: state.cartlistitem.map((i) =>
-                i._id === action.productCard._id
-                  ? {
+                i._id === action.productCard._id //i se pura cart list ke cards aare hai aur action.productCard
+                  ? //vo specific card jispe hum add to cart click kar re hai vo aata hai
+                    {
                       ...i, // ...action.productCard,
                       cartqty: i.cartqty + 1, //action.productCard.cartqty + 1
                     }
                   : i
               ),
-              // totalPrice:
-              //   state.totalPrice + action.productPrice * state.productCount,
             };
+      case "INCREMENT":
+        return {
+          ...state,
+          cartlistitem: state.cartlistitem.map((i) =>
+            i._id === action.productCard._id
+              ? {
+                  ...i,
+                  cartqty: i.cartqty + 1,
+                }
+              : i
+          ),
+        };
+      case "DECREMENT":
+        return {
+          ...state,
+          cartlistitem: state.cartlistitem.map((i) =>
+            i._id === action.productCard._id
+              ? i.cartqty < 1
+                ? { ...i, cartqty: 1 }
+                : { ...i, cartqty: i.cartqty - 1 }
+              : i
+          ),
+        };
       case "MOVE_TO_CART":
         // removeFromWishListHandler(action.productCard);
         return {
           ...state,
           cartlistitem: [...state.cartlistitem, action.productCard],
         };
+      case "REMOVE_FROM_CART":
+        return {
+          ...state,
+          cartlistitem: state.cartlistitem.filter(
+            (i) => i._id !== action.productCard._id
+          ),
+        };
+      // case "MOVE_TO_WISHLIST":
+      //   return {
+      //    setWishList((prev)=>{
+      //      const index=prev.wishlist.findIndex((i)=)
+      //    })
+      //   };
 
       default:
         return state;

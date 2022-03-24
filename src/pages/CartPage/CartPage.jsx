@@ -2,12 +2,13 @@ import { CartPageCard, useCart, PriceCard } from "../../component";
 
 const CartPage = () => {
   const { state, dispatch } = useCart();
-  //   console.log(state);
+  const { cartlistitem } = state;
+  // console.log(cartlistitem);
   return (
     <>
       <h1 className='cart-page-header'>My Cart</h1>
       <h2 className='cart-page-header'>
-        Your Cart has {state.cartCount} Items
+        Your Cart has {cartlistitem.length} Items
       </h2>
       <main className='cart-page-container'>
         <div className='horizontal-cards'>

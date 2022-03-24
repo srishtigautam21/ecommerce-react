@@ -52,7 +52,6 @@ const Card = ({ product }) => {
               dispatch({
                 type: "ADD_TO_CART",
                 productCard: product,
-                productPrice: product.price,
               });
             }}
             className='button card-button ecom-card-button'
