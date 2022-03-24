@@ -1,8 +1,9 @@
-import { useWishList } from "../index";
+import { useWishList, useCart } from "../index";
 import "./card.css";
 
 const Card = ({ product }) => {
   const { wishListHandler } = useWishList();
+  const { state, dispatch } = useCart();
   const {
     _id,
     name,
@@ -46,7 +47,15 @@ const Card = ({ product }) => {
             <span className='fa fa-star checked'></span>
             <span className='xs-margin'>|</span>5
           </div>
-          <button className='button card-button ecom-card-button'>
+          <button
+            onClick={() => {
+              dispatch({
+                type: "ADD_TO_CART",
+                productCard: product,
+              });
+            }}
+            className='button card-button ecom-card-button'
+          >
             Add to Cart
           </button>
           {isOutOfStock && (

@@ -16,6 +16,7 @@ export const products = [
     ratings: 4,
     newItem: true,
     isOutOfStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -26,6 +27,7 @@ export const products = [
     categoryName: "Nutritional Nuts",
     ratings: 4,
     isOutOfStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -40,6 +42,7 @@ export const products = [
     ratings: 3,
     sale: true,
     isOutOfStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -50,6 +53,7 @@ export const products = [
     ratings: 4,
     newItem: true,
     isOutOfStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -60,19 +64,21 @@ export const products = [
     categoryName: "Super Seeds",
     ratings: 3,
     isOutOfStock: true,
+    qty: 1,
   },
   {
     _id: uuid(),
 
     name: "Mixed Nuts | (500g)",
-    price: 750,
+    price: 600,
     image: Images.mixedNuts,
     discount: true,
-    priceBeforeDiscount: 600,
+    priceBeforeDiscount: 750,
     discPerc: 20,
     categoryName: "Nutritional Nuts",
     ratings: 4,
     sale: true,
     isOutOfStock: false,
+    qty: 1,
   },
 ];

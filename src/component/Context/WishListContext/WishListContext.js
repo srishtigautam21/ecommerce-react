@@ -17,13 +17,11 @@ const WishListProvider = ({ children }) => {
             ...prev,
             wishListCount: prev.wishListCount + 1,
             wishlistitem: [...prev.wishlistitem, item],
-            heartcolor: true,
           }
         : {
             ...prev,
             wishListCount: prev.wishListCount - 1,
             wishlistitem: prev.wishlistitem.filter((i) => i._id !== item._id),
-            heartcolor: false,
           }; //Will remove that item from wishlist which would already be in wishlist cart
     });
   };
@@ -41,7 +39,12 @@ const WishListProvider = ({ children }) => {
 
   return (
     <WishListContext.Provider
-      value={{ wishListHandler, wishlist, removeFromWishListHandler }}
+      value={{
+        wishListHandler,
+        wishlist,
+        removeFromWishListHandler,
+        setWishList,
+      }}
     >
       {children}
     </WishListContext.Provider>
