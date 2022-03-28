@@ -8,7 +8,6 @@ import { Images } from "../../Assets/Images/image";
 export const products = [
   {
     _id: uuid(),
-
     name: "Rolled Oats | Gluten free | Lab Tested",
     price: 225,
     image: Images.oats,
@@ -16,22 +15,18 @@ export const products = [
     ratings: 4,
     newItem: true,
     isOutOfStock: false,
-    qty: 1,
   },
   {
     _id: uuid(),
-
     name: "Organic Cashew nuts (Kaju)",
     price: 400,
     image: Images.cashews,
     categoryName: "Nutritional Nuts",
     ratings: 4,
     isOutOfStock: false,
-    qty: 1,
   },
   {
     _id: uuid(),
-
     name: "Organic Quinoa | (500g) | (Salvia hispanica)",
     price: 280,
     image: Images.quinoa,
@@ -42,7 +37,6 @@ export const products = [
     ratings: 3,
     sale: true,
     isOutOfStock: false,
-    qty: 1,
   },
   {
     _id: uuid(),
@@ -53,22 +47,18 @@ export const products = [
     ratings: 4,
     newItem: true,
     isOutOfStock: false,
-    qty: 1,
   },
   {
     _id: uuid(),
-
     name: "Organic Chia Seeds",
     price: 250,
     image: Images.chiaSeeds,
     categoryName: "Super Seeds",
     ratings: 3,
     isOutOfStock: true,
-    qty: 1,
   },
   {
     _id: uuid(),
-
     name: "Mixed Nuts | (500g)",
     price: 600,
     image: Images.mixedNuts,
@@ -79,6 +69,59 @@ export const products = [
     ratings: 4,
     sale: true,
     isOutOfStock: false,
-    qty: 1,
+  },
+  {
+    _id: uuid(),
+    name: "Fresh StrawBerries | (250g)",
+    price: 390,
+    image: Images.strawberries,
+    categoryName: "Fruits",
+    ratings: 3,
+    isOutOfStock: false,
+  },
+  {
+    _id: uuid(),
+    name: "Organic Sunflower Seeds | (200g)",
+    price: 100,
+    image: Images.sunflowerSeeds,
+    categoryName: "Super Seeds",
+    ratings: 5,
+    isOutOfStock: false,
+  },
+  {
+    _id: uuid(),
+    name: "Organic Flax Seeds | (200g)",
+    price: 50,
+    image: Images.flaxSeeds,
+    categoryName: "Super Seeds",
+    ratings: 5,
+    isOutOfStock: false,
+  },
+  {
+    _id: uuid(),
+    name: "Fresh | Organic Mangoes | (1kg)",
+    price: 120,
+    image: Images.mangoes,
+    categoryName: "Fruits",
+    ratings: 3,
+    isOutOfStock: false,
+  },
+  {
+    _id: uuid(),
+    name: "Farm fresh | Red Onions | (1kg)",
+    price: 50,
+    image: Images.onions,
+    categoryName: "Vegetables",
+    ratings: 4,
+    isOutOfStock: false,
+  },
+  {
+    _id: uuid(),
+    name: "Farm fresh | Spinach | (250g)",
+    price: 80,
+    image: Images.spinach,
+    categoryName: "Vegetables",
+    ratings: 4,
+    isOutOfStock: false,
   },
 ];

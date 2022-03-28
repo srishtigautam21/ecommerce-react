@@ -31,3 +31,13 @@
 .rating-margin {
   margin: 5px 0;
 }
+.md-txt {
+  font-size: 1.2em;
+}
+.md-txt:hover {
+  cursor: pointer;
+  color: var(--PRIMARY-HOVER);
+}
+.txt-color {
+  color: var(--COLOR-PRIMARY);
+}
