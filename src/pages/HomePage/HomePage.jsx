@@ -1,12 +1,24 @@
 import "./homePage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HeroImage from "../../Assets/Images/home-page-photo.jpg";
 import SeedImage from "../../Assets/Images/seeds.jpg";
 import FruitImage from "../../Assets/Images/mango.jpg";
 import NutsImage from "../../Assets/Images/mixed nuts.jpg";
 import GrainsImage from "../../Assets/Images/quinoa.jpg";
+import { useCard } from "../../component/Context/CardContext/CardContext";
 
 const HomePage = () => {
+  const { filterDispatch, initialFilterState } = useCard();
+  const navigate = useNavigate();
+
+  const featureCategoryHandler = (category) => {
+    navigate("/products");
+    filterDispatch({
+      type: "SET_CATEGORY_FROM_HOME",
+      payload: category,
+    });
+  };
+
   return (
     <div>
       {/* Main image section */}
@@ -25,17 +37,62 @@ const HomePage = () => {
       {/* Featured category section */}
       <h1 className='featured-header'>Featured Categories</h1>
       <div className='featured-categories'>
-        <FeaturedCategory text='Dried Seeds' image={SeedImage} />
-        <FeaturedCategory text='Fruits' image={FruitImage} />
-        <FeaturedCategory text='Nuts' image={NutsImage} />
-        <FeaturedCategory text='Grains' image={GrainsImage} />
+        <div
+          onClick={() => featureCategoryHandler("Super Seeds")}
+          className='square-image parent-positioning'
+        >
+          <img
+            src={SeedImage}
+            className='featured-categories-image'
+            alt='seeds-img'
+          />
+          <h2 className='category-positioning'>Dried Seeds</h2>
+        </div>
+
+        {/* <FeaturedCategory text='Dried Seeds' image={SeedImage} /> Future TODOs*/}
+        <div
+          onClick={() => featureCategoryHandler("Fruits")}
+          className='square-image parent-positioning'
+        >
+          <img
+            src={FruitImage}
+            className='featured-categories-image'
+            alt='seeds-img'
+          />
+          <h2 className='category-positioning'>Fruits</h2>
+        </div>
+
+        <div
+          onClick={() => featureCategoryHandler("Nutritional Nuts")}
+          className='square-image parent-positioning'
+        >
+          <img
+            src={NutsImage}
+            className='featured-categories-image'
+            alt='seeds-img'
+          />
+          <h2 className='category-positioning'>Nuts</h2>
+        </div>
+
+        <div
+          onClick={() => featureCategoryHandler("Healthy grains")}
+          className='square-image parent-positioning'
+        >
+          <img
+            src={GrainsImage}
+            className='featured-categories-image'
+            alt='seeds-img'
+          />
+          <h2 className='category-positioning'>Grains</h2>
+        </div>
       </div>
     </div>
   );
 };
 export { HomePage };
 
-const FeaturedCategory = (props) => {
+// { Future TODOs
+/* const FeaturedCategory = (props) => {
   return (
     <div className='square-image parent-positioning'>
       <img
@@ -46,4 +103,4 @@ const FeaturedCategory = (props) => {
       <h2 className='category-positioning'>{props.text}</h2>
     </div>
   );
-};
+}; */

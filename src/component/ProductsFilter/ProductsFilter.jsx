@@ -1,11 +1,27 @@
 import "./productFilter.css";
+import { useCard } from "../index";
 
 const ProductsFilter = () => {
+  const { products, filterDispatch, filterState, initialFilterState } =
+    useCard();
+
   return (
     <>
       <div className='sidebar-header'>
         <h2>Filters</h2>
-        <p className='md-margin'>Clear</p>
+        <button
+          className='text-link md-txt txt-color md-margin'
+          onClick={() =>
+            filterDispatch({
+              type: "CLEAR_ALL",
+              payload: {
+                ...initialFilterState,
+              },
+            })
+          }
+        >
+          Clear
+        </button>
       </div>
       <h3>Price</h3>
       <div className='filter'>
@@ -15,6 +31,13 @@ const ProductsFilter = () => {
             id='lowToHigh'
             name='radio-lowToHigh'
             type='radio'
+            onChange={() =>
+              filterDispatch({
+                type: "SORTING_BY_PRICE",
+                payload: "lowToHigh",
+              })
+            }
+            checked={filterState.sortByPrice === "lowToHigh"}
           />
           Low to High
         </label>
@@ -24,6 +47,13 @@ const ProductsFilter = () => {
             id='highToLow'
             name='radio-highToLow'
             type='radio'
+            onChange={() =>
+              filterDispatch({
+                type: "SORTING_BY_PRICE",
+                payload: "highToLow",
+              })
+            }
+            checked={filterState.sortByPrice === "highToLow"}
           />
           High to Low
         </label>
@@ -36,6 +66,13 @@ const ProductsFilter = () => {
             id='grains'
             name='checkbox-grains'
             type='checkbox'
+            checked={filterState.filterByCategories.includes("Healthy grains")}
+            onChange={() =>
+              filterDispatch({
+                type: "FILTER_BY_CATEGORY",
+                payload: "Healthy grains",
+              })
+            }
           />
           Grains
         </label>
@@ -45,6 +82,15 @@ const ProductsFilter = () => {
             id='nuts'
             name='checkbox-nuts'
             type='checkbox'
+            checked={filterState.filterByCategories.includes(
+              "Nutritional Nuts"
+            )}
+            onChange={() =>
+              filterDispatch({
+                type: "FILTER_BY_CATEGORY",
+                payload: "Nutritional Nuts",
+              })
+            }
           />
           Nuts
         </label>
@@ -54,6 +100,13 @@ const ProductsFilter = () => {
             id='seeds'
             name='checkbox-seeds'
             type='checkbox'
+            checked={filterState.filterByCategories.includes("Super Seeds")}
+            onChange={() =>
+              filterDispatch({
+                type: "FILTER_BY_CATEGORY",
+                payload: "Super Seeds",
+              })
+            }
           />
           Seeds
         </label>
@@ -63,6 +116,10 @@ const ProductsFilter = () => {
             id='fruits'
             name='checkbox-fruits'
             type='checkbox'
+            checked={filterState.filterByCategories.includes("Fruits")}
+            onChange={() =>
+              filterDispatch({ type: "FILTER_BY_CATEGORY", payload: "Fruits" })
+            }
           />
           Fruits
         </label>
@@ -72,6 +129,13 @@ const ProductsFilter = () => {
             id='vegetables'
             name='checkbox-vegetables'
             type='checkbox'
+            checked={filterState.filterByCategories.includes("Vegetables")}
+            onChange={() =>
+              filterDispatch({
+                type: "FILTER_BY_CATEGORY",
+                payload: "Vegetables",
+              })
+            }
           />
           Vegetables
         </label>
@@ -95,6 +159,13 @@ const ProductsFilter = () => {
           type='range'
           min='1'
           max='5'
+          value={filterState.filterByRatingSlider}
+          onChange={(e) => {
+            filterDispatch({
+              type: "FILTER_BY_RATING_SLIDER",
+              payload: Number(e.target.value),
+            });
+          }}
         ></input>
       </label>
     </>
