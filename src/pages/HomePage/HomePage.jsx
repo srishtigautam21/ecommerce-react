@@ -11,6 +11,14 @@ const HomePage = () => {
   const { filterDispatch, initialFilterState } = useCard();
   const navigate = useNavigate();
 
+  const featureCategoryHandler = (category) => {
+    navigate("/products");
+    filterDispatch({
+      type: "SET_CATEGORY_FROM_HOME",
+      payload: category,
+    });
+  };
+
   return (
     <div>
       {/* Main image section */}
@@ -30,13 +38,7 @@ const HomePage = () => {
       <h1 className='featured-header'>Featured Categories</h1>
       <div className='featured-categories'>
         <div
-          onClick={() => {
-            navigate("/products");
-            filterDispatch({
-              type: "SET_CATEGORY_FROM_HOME",
-              payload: "Super Seeds",
-            });
-          }}
+          onClick={() => featureCategoryHandler("Super Seeds")}
           className='square-image parent-positioning'
         >
           <img
@@ -49,13 +51,7 @@ const HomePage = () => {
 
         {/* <FeaturedCategory text='Dried Seeds' image={SeedImage} /> Future TODOs*/}
         <div
-          onClick={() => {
-            navigate("/products");
-            filterDispatch({
-              type: "SET_CATEGORY_FROM_HOME",
-              payload: "Fruits",
-            });
-          }}
+          onClick={() => featureCategoryHandler("Fruits")}
           className='square-image parent-positioning'
         >
           <img
@@ -67,13 +63,7 @@ const HomePage = () => {
         </div>
 
         <div
-          onClick={() => {
-            navigate("/products");
-            filterDispatch({
-              type: "SET_CATEGORY_FROM_HOME",
-              payload: "Nutritional Nuts",
-            });
-          }}
+          onClick={() => featureCategoryHandler("Nutritional Nuts")}
           className='square-image parent-positioning'
         >
           <img
@@ -85,13 +75,7 @@ const HomePage = () => {
         </div>
 
         <div
-          onClick={() => {
-            navigate("/products");
-            filterDispatch({
-              type: "SET_CATEGORY_FROM_HOME",
-              payload: "Healthy grains",
-            });
-          }}
+          onClick={() => featureCategoryHandler("Healthy grains")}
           className='square-image parent-positioning'
         >
           <img
