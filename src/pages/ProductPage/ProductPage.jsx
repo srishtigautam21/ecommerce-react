@@ -5,9 +5,7 @@ import { useFilterHook } from "../../hooks/useFilterHook";
 const ProductPage = () => {
   const { products, filterState } = useCard();
   const pricingFilterData = useFilterHook();
-  console.log(filterState.updatedProductList);
-  // console.log(pricingFilterData);
-  // filterDispatch({ type: "abcd" });
+
   return (
     <div className='product-container '>
       <aside className='position-fixed sidebar-flex'>

@@ -34,7 +34,6 @@ const HomePage = () => {
       {/* Featured category section */}
       <h1 className='featured-header'>Featured Categories</h1>
       <div className='featured-categories'>
-        {/* <Link to='/products' className='feat-link-color'> */}
         <div
           onClick={() => {
             navigate("/products");
@@ -42,8 +41,6 @@ const HomePage = () => {
               type: "SET_CATEGORY_FROM_HOME",
               payload: "Super Seeds",
             });
-            // navigate("/products");
-            // getCategoryFilter([...updatedProductList], filterByCategories);
           }}
           className='square-image parent-positioning'
         >
@@ -53,82 +50,70 @@ const HomePage = () => {
             alt='seeds-img'
           />
           <h2 className='category-positioning'>Dried Seeds</h2>
-          {/* <button
-            className='text-link md-txt txt-color'
+
+          {/* <FeaturedCategory text='Dried Seeds' image={SeedImage} /> Future TODOs*/}
+          <div
             onClick={() => {
               navigate("/products");
               filterDispatch({
                 type: "SET_CATEGORY_FROM_HOME",
-                payload: "Super Seeds",
+                payload: "Fruits",
               });
-              navigate("/products");
-              getCategoryFilter([...updatedProductList], filterByCategories);
             }}
-          ></button> */}
+            className='square-image parent-positioning'
+          >
+            <img
+              src={FruitImage}
+              className='featured-categories-image'
+              alt='seeds-img'
+            />
+            <h2 className='category-positioning'>Fruits</h2>
+          </div>
+
+          <div
+            onClick={() => {
+              navigate("/products");
+              filterDispatch({
+                type: "SET_CATEGORY_FROM_HOME",
+                payload: "Nutritional Nuts",
+              });
+            }}
+            className='square-image parent-positioning'
+          >
+            <img
+              src={NutsImage}
+              className='featured-categories-image'
+              alt='seeds-img'
+            />
+            <h2 className='category-positioning'>Nuts</h2>
+          </div>
+
+          <div
+            onClick={() => {
+              navigate("/products");
+              filterDispatch({
+                type: "SET_CATEGORY_FROM_HOME",
+                payload: "Healthy grains",
+              });
+            }}
+            className='square-image parent-positioning'
+          >
+            <img
+              src={GrainsImage}
+              className='featured-categories-image'
+              alt='seeds-img'
+            />
+            <h2 className='category-positioning'>Grains</h2>
+          </div>
         </div>
-        {/* </Link> */}
-        {/* <FeaturedCategory text='Dried Seeds' image={SeedImage} /> */}
-        <div
-          onClick={() => {
-            navigate("/products");
-            filterDispatch({
-              type: "SET_CATEGORY_FROM_HOME",
-              payload: "Fruits",
-            });
-          }}
-          className='square-image parent-positioning'
-        >
-          <img
-            src={FruitImage}
-            className='featured-categories-image'
-            alt='seeds-img'
-          />
-          <h2 className='category-positioning'>Fruits</h2>
-        </div>
-        {/* <FeaturedCategory text='Fruits' image={FruitImage} /> */}
-        <div
-          onClick={() => {
-            navigate("/products");
-            filterDispatch({
-              type: "SET_CATEGORY_FROM_HOME",
-              payload: "Nutritional Nuts",
-            });
-          }}
-          className='square-image parent-positioning'
-        >
-          <img
-            src={NutsImage}
-            className='featured-categories-image'
-            alt='seeds-img'
-          />
-          <h2 className='category-positioning'>Nuts</h2>
-        </div>
-        {/* <FeaturedCategory text='Nuts' image={NutsImage} /> */}
-        <div
-          onClick={() => {
-            navigate("/products");
-            filterDispatch({
-              type: "SET_CATEGORY_FROM_HOME",
-              payload: "Healthy grains",
-            });
-          }}
-          className='square-image parent-positioning'
-        >
-          <img
-            src={GrainsImage}
-            className='featured-categories-image'
-            alt='seeds-img'
-          />
-          <h2 className='category-positioning'>Grains</h2>
-        </div>
-        {/* <FeaturedCategory text='Grains' image={GrainsImage} /> */}
       </div>
     </div>
   );
 };
 export { HomePage };
 
-const FeaturedCategory = (props) => {
+// { Future TODOs
+/* const FeaturedCategory = (props) => {
   return (
     <div className='square-image parent-positioning'>
       <img
@@ -139,4 +124,4 @@ const FeaturedCategory = (props) => {
       <h2 className='category-positioning'>{props.text}</h2>
     </div>
   );
-};
+}; */

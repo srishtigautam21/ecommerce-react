@@ -1,86 +1,9 @@
-import { useReducer, useState } from "react";
 import "./productFilter.css";
 import { useCard } from "../index";
 
 const ProductsFilter = () => {
-  // const [filter, setFilter] = useState([]);
-
-  // const sortByPrice = (selectedRadioFilter) => {
-  //   const updatedProductList = [];
-  //   selectedRadioFilter === "LOW_TO_HIGH"
-  //     ? (updatedProductList = [
-  //         ...products.price.sort((prod1, prod2) => prod1 - prod2),
-  //       ])
-  //     : (updatedProductList = [
-  //         ...products.price.sort((prod1, prod2) => prod2 - prod1),
-  //       ]);
-  //   setFilter(updatedProductList);
-  // };
-  const radioButtonHandler = () => {
-    filterDispatch({
-      type: "SORTING_BY_PRICE",
-      payload: "LOW_TO_HIGH",
-    });
-    sortByPrice(filterState.filterRadioButton);
-  };
-
-  // const filterReducer = (filterState, action) => {
-  //   // console.log(filterState.categoriesCheckBox);
-  //   switch (action.type) {
-  //     case "SORTING_BY_PRICE":
-  //       return {
-  //         ...filterState,
-  //         filterRadioButton: action.payload,
-  //         updatedProductList:
-  //           filterState.filterRadioButton === "LOW_TO_HIGH"
-  //             ? [
-  //                 ...filterState.updatedProductList,
-  //                 products.price.sort((prod1, prod2) => prod1 - prod2),
-  //               ]
-  //             : [
-  //                 ...filterState.updatedProductList,
-  //                 products.price.sort((prod1, prod2) => prod2 - prod1),
-  //               ],
-  //       };
-  //     case "FILTER_BY_CATEGORY":
-  //       return {
-  //         ...filterState,
-  //         categoriesCheckBox: filterState.categoriesCheckBox.includes(
-  //           action.payload
-  //         )
-  //           ? filterState.categoriesCheckBox.filter((i) => i !== action.payload)
-  //           : [...filterState.categoriesCheckBox, action.payload],
-  //         updatedProductList: categoriesCheckBox.map(
-  //           (itemName) => products.categoryName === itemName
-  //         ),
-  //       };
-  //   }
-  // };
-
-  // const filterObj = {
-  //   filterRadioButton: "",
-  //   categoriesCheckBox: [],
-  //   ratingSlider: [],
-  //   updatedProductList: [],
-  // };
-  // const [filterState, filterDispatch] = useReducer(filterReducer, filterObj);
   const { products, filterDispatch, filterState, initialFilterState } =
     useCard();
-  console.log("filter state in product Filter", filterState);
-  // const {
-  //   _id,
-  //   name,
-  //   price,
-  //   image,
-  //   discount,
-  //   priceBeforeDiscount,
-  //   discPerc,
-  //   categoryName,
-  //   ratings,
-  //   sale,
-  //   isOutOfStock,
-  //   newItem = false,
-  // } = products;
 
   return (
     <>
@@ -92,7 +15,6 @@ const ProductsFilter = () => {
             filterDispatch({
               type: "CLEAR_ALL",
               payload: {
-                // ...products,
                 ...initialFilterState,
               },
             })

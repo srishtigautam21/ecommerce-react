@@ -14,7 +14,7 @@ const useFilterHook = () => {
     filterByRatingSlider,
     updatedProductList,
   } = filterState;
-  // const filteredData = JSON.parse(JSON.stringify(updatedProductList));
+
   const filteredData = [...updatedProductList];
 
   const categoryFilterData = getCategoryFilter(
