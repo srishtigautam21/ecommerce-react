@@ -40,7 +40,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    name: "Fresh | Organic Apples",
+    name: "Fresh | Organic Apples | 2kg",
     price: 300,
     image: Images.apple,
     categoryName: "Fruits",
@@ -50,7 +50,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    name: "Organic Chia Seeds",
+    name: "Organic| Healthy| Chia Seeds | 500g",
     price: 250,
     image: Images.chiaSeeds,
     categoryName: "Super Seeds",
@@ -59,7 +59,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    name: "Mixed Nuts | (500g)",
+    name: "Mixed Nuts | 4 Types | (500g)",
     price: 600,
     image: Images.mixedNuts,
     discount: true,

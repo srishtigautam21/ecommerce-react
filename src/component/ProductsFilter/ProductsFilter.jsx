@@ -66,20 +66,21 @@ const ProductsFilter = () => {
   // const [filterState, filterDispatch] = useReducer(filterReducer, filterObj);
   const { products, filterDispatch, filterState, initialFilterState } =
     useCard();
-  const {
-    _id,
-    name,
-    price,
-    image,
-    discount,
-    priceBeforeDiscount,
-    discPerc,
-    categoryName,
-    ratings,
-    sale,
-    isOutOfStock,
-    newItem = false,
-  } = products;
+  console.log("filter state in product Filter", filterState);
+  // const {
+  //   _id,
+  //   name,
+  //   price,
+  //   image,
+  //   discount,
+  //   priceBeforeDiscount,
+  //   discPerc,
+  //   categoryName,
+  //   ratings,
+  //   sale,
+  //   isOutOfStock,
+  //   newItem = false,
+  // } = products;
 
   return (
     <>
@@ -91,6 +92,7 @@ const ProductsFilter = () => {
             filterDispatch({
               type: "CLEAR_ALL",
               payload: {
+                // ...products,
                 ...initialFilterState,
               },
             })
@@ -110,10 +112,10 @@ const ProductsFilter = () => {
             onChange={() =>
               filterDispatch({
                 type: "SORTING_BY_PRICE",
-                payload: "LOW_TO_HIGH",
+                payload: "lowToHigh",
               })
             }
-            checked={filterState.sortByPrice === "LOW_TO_HIGH"}
+            checked={filterState.sortByPrice === "lowToHigh"}
           />
           Low to High
         </label>
@@ -126,10 +128,10 @@ const ProductsFilter = () => {
             onChange={() =>
               filterDispatch({
                 type: "SORTING_BY_PRICE",
-                payload: "HIGH_TO_LOW",
+                payload: "highToLow",
               })
             }
-            checked={filterState.sortByPrice === "HIGH_TO_LOW"}
+            checked={filterState.sortByPrice === "highToLow"}
           />
           High to Low
         </label>
@@ -142,9 +144,12 @@ const ProductsFilter = () => {
             id='grains'
             name='checkbox-grains'
             type='checkbox'
-            checked={filterState.filterByCategories.includes("grains")}
+            checked={filterState.filterByCategories.includes("Healthy grains")}
             onChange={() =>
-              filterDispatch({ type: "FILTER_BY_CATEGORY", payload: "grains" })
+              filterDispatch({
+                type: "FILTER_BY_CATEGORY",
+                payload: "Healthy grains",
+              })
             }
           />
           Grains
@@ -155,9 +160,14 @@ const ProductsFilter = () => {
             id='nuts'
             name='checkbox-nuts'
             type='checkbox'
-            checked={filterState.filterByCategories.includes("nuts")}
+            checked={filterState.filterByCategories.includes(
+              "Nutritional Nuts"
+            )}
             onChange={() =>
-              filterDispatch({ type: "FILTER_BY_CATEGORY", payload: "nuts" })
+              filterDispatch({
+                type: "FILTER_BY_CATEGORY",
+                payload: "Nutritional Nuts",
+              })
             }
           />
           Nuts
@@ -168,9 +178,12 @@ const ProductsFilter = () => {
             id='seeds'
             name='checkbox-seeds'
             type='checkbox'
-            checked={filterState.filterByCategories.includes("seeds")}
+            checked={filterState.filterByCategories.includes("Super Seeds")}
             onChange={() =>
-              filterDispatch({ type: "FILTER_BY_CATEGORY", payload: "seeds" })
+              filterDispatch({
+                type: "FILTER_BY_CATEGORY",
+                payload: "Super Seeds",
+              })
             }
           />
           Seeds
@@ -181,9 +194,9 @@ const ProductsFilter = () => {
             id='fruits'
             name='checkbox-fruits'
             type='checkbox'
-            checked={filterState.filterByCategories.includes("fruits")}
+            checked={filterState.filterByCategories.includes("Fruits")}
             onChange={() =>
-              filterDispatch({ type: "FILTER_BY_CATEGORY", payload: "fruits" })
+              filterDispatch({ type: "FILTER_BY_CATEGORY", payload: "Fruits" })
             }
           />
           Fruits
@@ -194,11 +207,11 @@ const ProductsFilter = () => {
             id='vegetables'
             name='checkbox-vegetables'
             type='checkbox'
-            checked={filterState.filterByCategories.includes("vegetables")}
+            checked={filterState.filterByCategories.includes("Vegetables")}
             onChange={() =>
               filterDispatch({
                 type: "FILTER_BY_CATEGORY",
-                payload: "vegetables",
+                payload: "Vegetables",
               })
             }
           />
@@ -224,6 +237,7 @@ const ProductsFilter = () => {
           type='range'
           min='1'
           max='5'
+          value={filterState.filterByRatingSlider}
           onChange={(e) => {
             filterDispatch({
               type: "FILTER_BY_RATING_SLIDER",

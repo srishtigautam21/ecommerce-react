@@ -7,15 +7,18 @@ import {
 
 const useFilterHook = () => {
   const { filterState } = useCard();
+
   const {
     sortByPrice,
     filterByCategories,
     filterByRatingSlider,
     updatedProductList,
   } = filterState;
+  // const filteredData = JSON.parse(JSON.stringify(updatedProductList));
+  const filteredData = [...updatedProductList];
 
   const categoryFilterData = getCategoryFilter(
-    updatedProductList,
+    filteredData,
     filterByCategories
   );
 
@@ -26,6 +29,9 @@ const useFilterHook = () => {
 
   const pricingFilterData = getPricingFilter(ratingFilterData, sortByPrice);
 
-  return { finalDataAfterFilter: pricingFilterData };
+  if (pricingFilterData.length === 0) {
+    return updatedProductList;
+  }
+  return pricingFilterData; //Final data after all filters are applied
 };
 export { useFilterHook };
