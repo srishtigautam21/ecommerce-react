@@ -73,9 +73,18 @@ const CardProvider = ({ children }) => {
     }
   }, initialFilterState);
 
+  const encodedToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxMjk3NGRmNS03MDQ5LTQwY2ItYmE5MC1jZmY0NjVmYmViY2MiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.zzeQ44lCp-hbuV2W9HzUEzk2kFf7NcU2SWWQpGsio8Q";
+
   return (
     <CardContext.Provider
-      value={{ products, filterDispatch, filterState, initialFilterState }}
+      value={{
+        products,
+        filterDispatch,
+        filterState,
+        initialFilterState,
+        encodedToken,
+      }}
     >
       {children}
     </CardContext.Provider>
@@ -84,3 +93,5 @@ const CardProvider = ({ children }) => {
 
 const useCard = () => useContext(CardContext);
 export { useCard, CardProvider };
+
+// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxMjk3NGRmNS03MDQ5LTQwY2ItYmE5MC1jZmY0NjVmYmViY2MiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.zzeQ44lCp-hbuV2W9HzUEzk2kFf7NcU2SWWQpGsio8Q"

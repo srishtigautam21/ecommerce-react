@@ -1,9 +1,11 @@
 import { CartPageCard, useCart, PriceCard } from "../../component";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const CartPage = () => {
-  const { state, dispatch } = useCart();
+  useDocumentTitle("CartPage");
+  const { state, dispatch, addToCart } = useCart();
   const { cartlistitem } = state;
-
+  console.log(cartlistitem);
   return (
     <>
       <h1 className='cart-page-header'>My Cart</h1>

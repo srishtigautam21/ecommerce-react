@@ -1,9 +1,14 @@
-import { useWishList, useCart } from "../index";
+import { useWishList, useCart, useCard } from "../index";
 import "./card.css";
 
 const Card = ({ product }) => {
   const { wishListHandler } = useWishList();
-  const { state, dispatch } = useCart();
+  const { state, dispatch, addToCart } = useCart();
+
+  const addToCartHandler = (product) => {
+    // console.log(product);
+    addToCart(product);
+  };
   const {
     _id,
     name,
@@ -49,13 +54,14 @@ const Card = ({ product }) => {
           </div>
           <button
             onClick={() => {
-              dispatch({
-                type: "ADD_TO_CART",
-                productCard: product,
-              });
+              addToCartHandler(product);
             }}
             className='button card-button ecom-card-button'
           >
+            {/* dispatch({
+                type: "ADD_TO_CART",
+                productCard: product,
+              }); */}
             Add to Cart
           </button>
           {isOutOfStock && (
