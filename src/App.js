@@ -9,12 +9,14 @@ import {
   SignUpPage,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import Mockman from "mockman-js";
 
 function App() {
   return (
     <div className='App'>
       <Navbar />
+      <ToastContainer />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/products' element={<ProductPage />} />

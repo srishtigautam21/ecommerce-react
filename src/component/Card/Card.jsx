@@ -3,12 +3,21 @@ import { useWishList, useCart, useCard, useAuth } from "../index";
 import "./card.css";
 
 const Card = ({ product }) => {
-  const { wishListHandler } = useWishList();
+  const {
+    wishListHandler,
+    addToWishListApi,
+    wishListState,
+    removeFromWishListApi,
+  } = useWishList();
   const { state, dispatch, addToCart } = useCart();
   const { cartlistitem } = state;
+  const { wishlistitem } = wishListState;
   const { isUserLoggedIn } = useAuth();
 
   const isInCart = cartlistitem.findIndex((prod) => prod._id === product._id);
+  const isInWishList = wishlistitem.findIndex(
+    (prod) => prod._id === product._id
+  );
 
   const addToCartHandler = (product) => {
     // console.log(product);
@@ -104,11 +113,37 @@ const Card = ({ product }) => {
           <span className='badge-overlay'>
             {newItem === true ? "New" : sale === true ? "Sale" : null}
           </span>
-
-          <i
-            onClick={() => wishListHandler(product)}
+          {isUserLoggedIn === true ? (
+            isInWishList === -1 ? (
+              <i
+                className='fa fa-heart-o icon-btn icon-size icon-overlay'
+                onClick={() => addToWishListApi(product)}
+              ></i>
+            ) : (
+              <i
+                class='fa fa-heart icon-btn icon-size filled-icon-overlay'
+                onClick={() => removeFromWishListApi(_id)}
+              ></i>
+            )
+          ) : (
+            <Link to='/login'>
+              <i className='fa fa-heart-o icon-btn icon-size icon-overlay'></i>
+            </Link>
+          )}
+          {/* <i class="fa fa-heart"></i> */}
+          {/* <i
+            onClick={
+              
+                () => addToWishListApi(product)
+              : (
+                <Link to='/login'>
+                  <i className='fa fa-heart-o icon-btn icon-size icon-overlay'></i>
+                </Link>
+              )
+            }
             className='fa fa-heart-o icon-btn icon-size icon-overlay'
-          ></i>
+          ></i> */}
+          {/* wishListHandler(product) */}
         </div>
       </div>
     </div>

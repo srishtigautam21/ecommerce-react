@@ -1,34 +1,51 @@
 import { useWishList, useCart } from "../index";
 import "./horizontalCard.css";
+import { wishListToast } from "../../utility/Toastify";
 
 const CartPageCard = ({ product, dispatch, state }) => {
   const { cartCount, cartlistitem, productCount } = state;
-  const { setWishList, wishlist } = useWishList();
+  const {
+    setWishList,
+    wishlist,
+    addToWishListApi,
+    wishListState,
+    removeFromWishListApi,
+  } = useWishList();
+  const { wishlistitem } = wishListState;
   const { deleteFromCart, increaseQuantity, decreaseQuantity } = useCart();
 
-  console.log("In cartPage cart", cartlistitem);
+  // console.log("In cartPage cart", cartlistitem);
 
+  const isProdInWishList = wishlistitem.findIndex(
+    (prod) => prod._id === product._id
+  );
   const moveToWishListHandler = (product) => {
+    // const isProdInWishList = wishlistitem.findIndex(
+    //   (prod) => prod._id === product._id
+    // );
+
     deleteFromCart(_id);
-    // dispatch({ type: "REMOVE_FROM_CART", productCard: product });
-    // dispatch({ type: "MOVE_TO_WISHLIST", productCard: product });
-    setWishList((prev) => {
-      const index = prev.wishlistitem.findIndex((i) => i._id === product._id);
-      return index === -1 //If item is not in wishlist
-        ? {
-            ...prev,
-            wishListCount: prev.wishListCount + 1,
-            wishlistitem: [...prev.wishlistitem, product],
-          }
-        : {
-            ...prev,
-            wishListCount: prev.wishListCount - 1,
-            wishlistitem: prev.wishlistitem.filter(
-              (i) => i._id !== product._id
-            ),
-          };
-    });
+    addToWishListApi(product);
   };
+
+  // dispatch({ type: "REMOVE_FROM_CART", productCard: product });
+  // dispatch({ type: "MOVE_TO_WISHLIST", productCard: product });
+  // setWishList((prev) => {
+  //   const index = prev.wishlistitem.findIndex((i) => i._id === product._id);
+  //   return index === -1 //If item is not in wishlist
+  //     ? {
+  //         ...prev,
+  //         wishListCount: prev.wishListCount + 1,
+  //         wishlistitem: [...prev.wishlistitem, product],
+  //       }
+  //     : {
+  //         ...prev,
+  //         wishListCount: prev.wishListCount - 1,
+  //         wishlistitem: prev.wishlistitem.filter(
+  //           (i) => i._id !== product._id
+  //         ),
+  //       };
+  // });
 
   const {
     _id,
@@ -91,12 +108,27 @@ const CartPageCard = ({ product, dispatch, state }) => {
               </button>
             </div>
           </div>
-          <button
-            className='button cart-btn'
-            onClick={() => moveToWishListHandler(product)}
-          >
-            Move to Wishlist
-          </button>
+          {isProdInWishList === -1 ? (
+            <button
+              className='button cart-btn'
+              onClick={() => moveToWishListHandler(product)}
+            >
+              Move to Wishlist
+            </button>
+          ) : (
+            <button
+              className='button outline-button cart-btn'
+              onClick={() => removeFromWishListApi(_id)}
+            >
+              Remove From WishList
+            </button>
+          )}
+          {/* // <button
+          //   className='button cart-btn'
+          //   onClick={() => moveToWishListHandler(product)}
+          // >
+          //   Move to Wishlist
+          // </button> */}
           <button
             className='button outline-button cart-btn'
             onClick={() => deleteFromCart(_id)}

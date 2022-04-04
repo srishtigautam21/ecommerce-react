@@ -10,11 +10,13 @@ import { Link } from "react-router-dom";
 import { useWishList, useCart } from "../index";
 
 const Navbar = () => {
-  const { wishlist } = useWishList();
+  const { wishListState } = useWishList();
   const { state } = useCart();
   const { cartlistitem } = state;
+  const { wishlistitem } = wishListState;
 
   const totalCartQuantity = cartlistitem.length;
+  const totalWishListQuantity = wishlistitem.length;
   // console.log(totalCartQuantity);
   // cartlistitem.reduce(
   //   (acc, prod) => acc + prod.cartqty,
@@ -84,8 +86,9 @@ const Navbar = () => {
               <div className='ecom-badge-wrapper'>
                 <HeartIcon className='nav-icons' />
                 <div className='badge icon-over-badge'>
-                  {wishlist.wishListCount}
+                  {totalWishListQuantity}
                 </div>
+                {/* {wishlist.wishListCount} */}
               </div>
             </Link>
           </li>

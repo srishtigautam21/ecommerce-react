@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { loginToast } from "../../../utility/Toastify";
 
 const AuthContext = createContext("");
 
@@ -31,7 +32,10 @@ const AuthProvider = ({ children }) => {
       // console.log("auth", response.data.encodedToken);
       setUserLoggedIn(true);
       setLoginUser({ email: "", password: "" });
-      navigate("/products");
+      loginToast("Login Successful");
+      setTimeout(() => {
+        navigate("/products");
+      }, 300);
     } catch (e) {
       console.error(e);
     }
