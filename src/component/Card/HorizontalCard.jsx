@@ -1,12 +1,16 @@
-import { useWishList } from "../index";
+import { useWishList, useCart } from "../index";
 import "./horizontalCard.css";
 
 const CartPageCard = ({ product, dispatch, state }) => {
   const { cartCount, cartlistitem, productCount } = state;
   const { setWishList, wishlist } = useWishList();
+  const { deleteFromCart, increaseQuantity, decreaseQuantity } = useCart();
+
+  console.log("In cartPage cart", cartlistitem);
 
   const moveToWishListHandler = (product) => {
-    dispatch({ type: "REMOVE_FROM_CART", productCard: product });
+    deleteFromCart(_id);
+    // dispatch({ type: "REMOVE_FROM_CART", productCard: product });
     // dispatch({ type: "MOVE_TO_WISHLIST", productCard: product });
     setWishList((prev) => {
       const index = prev.wishlistitem.findIndex((i) => i._id === product._id);
@@ -63,25 +67,26 @@ const CartPageCard = ({ product, dispatch, state }) => {
             <div className='plus-minus-button'>
               <button
                 onClick={
-                  cartqty > 0
-                    ? () =>
-                        dispatch({ type: "DECREMENT", productCard: product })
-                    : dispatch({
-                        type: "REMOVE_FROM_CART",
-                        productCard: product,
-                      })
+                  product.qty > 1 //0
+                    ? () => decreaseQuantity(_id)
+                    : () => deleteFromCart(_id)
                 }
                 className='q-circle-btn'
               >
+                {/* dispatch({
+                          type: "REMOVE_FROM_CART",
+                          productCard: product,
+                        }) */}
+                {/* dispatch({ type: "DECREMENT", productCard: product }) */}
                 <i className='fa fa-minus'></i>
               </button>
-              <p className='q-num-box'>{cartqty}</p>
+              <p className='q-num-box'>{product.qty}</p>
+              {/* {cartqty} */}
               <button
-                onClick={() =>
-                  dispatch({ type: "INCREMENT", productCard: product })
-                }
+                onClick={() => increaseQuantity(_id)}
                 className='q-circle-btn'
               >
+                {/* dispatch({ type: "INCREMENT", productCard: product }) */}
                 <i className='fa fa-plus'></i>
               </button>
             </div>
@@ -94,11 +99,10 @@ const CartPageCard = ({ product, dispatch, state }) => {
           </button>
           <button
             className='button outline-button cart-btn'
-            onClick={() =>
-              dispatch({ type: "REMOVE_FROM_CART", productCard: product })
-            }
+            onClick={() => deleteFromCart(_id)}
           >
             Remove From Cart
+            {/* dispatch({ type: "REMOVE_FROM_CART", productCard: product }) */}
           </button>
         </div>
       </div>

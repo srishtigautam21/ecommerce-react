@@ -6,7 +6,7 @@ const CartContext = createContext({});
 
 const CartProvider = ({ children }) => {
   const { setWishList, wishlist } = useWishList();
-  const { encodedToken, products } = useCard();
+  const { products } = useCard();
 
   const cartReducer = (state, action) => {
     switch (action.type) {
@@ -16,7 +16,7 @@ const CartProvider = ({ children }) => {
       //     cartlistitem: action.payload,
       //   };
       case "ADD_TO_CART":
-        console.log(action.productCard);
+        // console.log("add to cart dispatch ", action.productCard);
         return {
           ...state,
           cartlistitem: action.productCard,
@@ -49,28 +49,33 @@ const CartProvider = ({ children }) => {
       //     };
 
       case "INCREMENT":
+        console.log("increment cart dispatch ", action.productCard);
+        console.log({ state, action });
         return {
           ...state,
-          cartlistitem: state.cartlistitem.map((i) =>
-            i._id === action.productCard._id
-              ? {
-                  ...i,
-                  cartqty: i.cartqty + 1,
-                }
-              : i
-          ),
+          cartlistitem: action.productCard,
         };
+      // ...state,
+      // cartlistitem: state.cartlistitem.map((i) =>
+      //   i._id === action.productCard._id
+      //     ? {
+      //         ...i,
+      //         cartqty: i.cartqty + 1,
+      //       }
+      //     : i
+      // ),
       case "DECREMENT":
         return {
           ...state,
-          cartlistitem: state.cartlistitem.map((i) =>
-            i._id === action.productCard._id
-              ? i.cartqty < 1
-                ? { ...i, cartqty: 1 }
-                : { ...i, cartqty: i.cartqty - 1 }
-              : i
-          ),
+          cartlistitem: action.productCard,
         };
+      // state.cartlistitem.map((i) =>
+      //     i._id === action.productCard._id
+      //       ? i.cartqty < 1
+      //         ? { ...i, cartqty: 1 }
+      //         : { ...i, cartqty: i.cartqty - 1 }
+      //       : i
+      //   ),
       case "MOVE_TO_CART":
         return {
           ...state,
@@ -79,10 +84,12 @@ const CartProvider = ({ children }) => {
       case "REMOVE_FROM_CART":
         return {
           ...state,
-          cartlistitem: state.cartlistitem.filter(
-            (i) => i._id !== action.productCard._id
-          ),
+          cartlistitem: action.productCard,
         };
+      // ...state,
+      //   cartlistitem: state.cartlistitem.filter(
+      //     (i) => i._id !== action.productCard._id
+      //   ),
       default:
         return state;
     }
@@ -96,8 +103,8 @@ const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, cartObj);
 
   const addToCart = async (product) => {
-    //   const encodedToken = localStorage.getItem("token");
-    console.log(product);
+    const encodedToken = localStorage.getItem("nurishToken");
+    // console.log(product);
     const config = { headers: { authorization: encodedToken } };
     try {
       // if (products.find((p) => p._id !== product._id)) {
@@ -109,11 +116,66 @@ const CartProvider = ({ children }) => {
         { product: product },
         config
       );
-      console.log(response);
+      // console.log(response);
       // const res = response.data.cart.find((p) => p._id === product._id);
       // console.log(res);
       dispatch({ type: "ADD_TO_CART", productCard: response.data.cart });
       // dispatch({ type: "ADD_TO_CART", productCard: response.data.cart });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const deleteFromCart = async (productId) => {
+    const encodedToken = localStorage.getItem("nurishToken");
+    const config = { headers: { authorization: encodedToken } };
+    try {
+      const response = await axios.delete(
+        `/api/user/cart/${productId}`,
+        config
+      );
+      console.log("delete api response", response);
+      dispatch({ type: "REMOVE_FROM_CART", productCard: response.data.cart });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const increaseQuantity = async (productId) => {
+    const encodedToken = localStorage.getItem("nurishToken");
+    console.log("in incr qty", encodedToken);
+    const config = {
+      headers: {
+        authorization: encodedToken,
+      },
+    };
+    try {
+      console.log("in try block");
+      const response = await axios.post(
+        `/api/user/cart/${productId}`,
+        { action: { type: "increment" } },
+        config
+      );
+      // const productInCart = response.data.cart.find((p) => p._id === productId);
+      console.log("Increase qty api", response);
+      // console.log("item found in cart now incr qty", productInCart);
+      dispatch({ type: "INCREMENT", productCard: response.data.cart });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const decreaseQuantity = async (productId) => {
+    try {
+      const encodedToken = localStorage.getItem("nurishToken");
+      const config = { headers: { authorization: encodedToken } };
+      const response = await axios.post(
+        `/api/user/cart/${productId}`,
+        { action: { type: "decrement" } },
+        config
+      );
+      // console.log(response);
+      dispatch({ type: "DECREMENT", productCard: response.data.cart });
     } catch (e) {
       console.error(e);
     }
@@ -136,7 +198,16 @@ const CartProvider = ({ children }) => {
   console.log(state);
   console.log(state.cartlistitem);
   return (
-    <CartContext.Provider value={{ state, dispatch, addToCart }}>
+    <CartContext.Provider
+      value={{
+        state,
+        dispatch,
+        addToCart,
+        deleteFromCart,
+        increaseQuantity,
+        decreaseQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

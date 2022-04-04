@@ -1,9 +1,14 @@
-import { useWishList, useCart, useCard } from "../index";
+import { Link } from "react-router-dom";
+import { useWishList, useCart, useCard, useAuth } from "../index";
 import "./card.css";
 
 const Card = ({ product }) => {
   const { wishListHandler } = useWishList();
   const { state, dispatch, addToCart } = useCart();
+  const { cartlistitem } = state;
+  const { isUserLoggedIn } = useAuth();
+
+  const isInCart = cartlistitem.findIndex((prod) => prod._id === product._id);
 
   const addToCartHandler = (product) => {
     // console.log(product);
@@ -52,18 +57,45 @@ const Card = ({ product }) => {
             <span className='fa fa-star checked'></span>
             <span className='xs-margin'>|</span>5
           </div>
-          <button
-            onClick={() => {
-              addToCartHandler(product);
-            }}
-            className='button card-button ecom-card-button'
-          >
-            {/* dispatch({
+          {isUserLoggedIn === true ? (
+            isInCart === -1 ? (
+              <button
+                onClick={() => {
+                  addToCartHandler(product);
+                }}
+                className='button card-button ecom-card-button'
+              >
+                Add To Cart
+              </button>
+            ) : (
+              <Link to='/cart'>
+                <button className='button outline-button card-button ecom-card-button'>
+                  Go To Cart
+                </button>
+              </Link>
+            )
+          ) : (
+            <Link to='/login'>
+              <button className='button card-button ecom-card-button'>
+                Add To Cart
+              </button>
+            </Link>
+          )}
+          {/* // <button
+          //   onClick={() => {
+          //     addToCartHandler(product);
+          //   }}
+          //   className='button card-button ecom-card-button'
+          // > */}
+          {/* dispatch({
                 type: "ADD_TO_CART",
                 productCard: product,
               }); */}
-            Add to Cart
-          </button>
+          {/* {isInCart === -1
+              ? "Add to Cart"
+              : "Go To Cart" && navigate("/cart")} */}
+          {/* Add to Cart */}
+
           {isOutOfStock && (
             <span className='overlay-text overlay-text-alignment'>
               Out of Stock

@@ -1,8 +1,12 @@
 import "./loginPage.css";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useAuth } from "../../component";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   useDocumentTitle("LoginPage");
+  const { loginHandler, setLoginUser, loginUser } = useAuth();
+  const { email, password } = loginUser;
   return (
     <div className='login-signup-page'>
       <form className='input-form login'>
@@ -15,6 +19,10 @@ const LoginPage = () => {
           placeholder='example@xyz.com'
           className='input-box'
           id='email-input'
+          value={loginUser.email}
+          onChange={(e) =>
+            setLoginUser((prev) => ({ ...prev, email: e.target.value }))
+          }
         />
         <label htmlFor='password' className='label-font-size'>
           Password*
@@ -24,6 +32,10 @@ const LoginPage = () => {
           minLength='8'
           className='input-box'
           id='password'
+          value={loginUser.password}
+          onChange={(e) =>
+            setLoginUser((prev) => ({ ...prev, password: e.target.value }))
+          }
         />
         <div className='forgot-psswrd'>
           <label>
@@ -32,17 +44,20 @@ const LoginPage = () => {
           </label>
           <p className='red-color forgot-psswrd-margin'>Forgot Password?</p>
         </div>
-        <a href='/Pages/ProductPage/product.html'>
-          <button className='button login-button'>Login</button>
-        </a>
-        <a
-          className='signup-page-link signup-page-link-margin'
-          href='/Pages/SignupPage/signup.html'
+        {/* <a href='/Pages/ProductPage/product.html'> */}
+        <button
+          className='button login-button'
+          onClick={(e) => loginHandler(e, email, password)}
         >
+          Guest Login
+        </button>
+
+        {/* </a> */}
+        <Link to='/signup' className='signup-page-link signup-page-link-margin'>
           <p>
             New to nurish? <span className='color-green'>SignUp Now</span>
           </p>
-        </a>
+        </Link>
       </form>
     </div>
   );
