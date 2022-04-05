@@ -6,7 +6,7 @@ const CartPage = () => {
   useDocumentTitle("CartPage");
   const { state, dispatch, addToCart } = useCart();
   const { cartlistitem } = state;
-  console.log("On cart page", cartlistitem);
+
   return (
     <div className='cart-page-ht'>
       <h1 className='cart-page-header'>My Cart</h1>

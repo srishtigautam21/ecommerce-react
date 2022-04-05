@@ -29,7 +29,7 @@ const addToCartToast = (text) => {
     autoClose: 1500,
   });
 };
-const deleteFromCart = (text) => {
+const deleteFromCartToast = (text) => {
   toast.warn(text, {
     position: "top-right",
     autoClose: 1500,
@@ -42,5 +42,5 @@ export {
   addToWishListToast,
   deleteFromWishListToast,
   addToCartToast,
-  deleteFromCart,
+  deleteFromCartToast,
 };

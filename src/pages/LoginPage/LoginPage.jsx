@@ -44,7 +44,7 @@ const LoginPage = () => {
           </label>
           <p className='red-color forgot-psswrd-margin'>Forgot Password?</p>
         </div>
-        {/* <a href='/Pages/ProductPage/product.html'> */}
+
         <button
           className='button login-button'
           onClick={(e) => loginHandler(e, email, password)}
@@ -52,7 +52,6 @@ const LoginPage = () => {
           Guest Login
         </button>
 
-        {/* </a> */}
         <Link to='/signup' className='signup-page-link signup-page-link-margin'>
           <p>
             New to nurish? <span className='color-green'>SignUp Now</span>

@@ -20,7 +20,6 @@ const Card = ({ product }) => {
   );
 
   const addToCartHandler = (product) => {
-    // console.log(product);
     addToCart(product);
   };
   const {
@@ -90,20 +89,6 @@ const Card = ({ product }) => {
               </button>
             </Link>
           )}
-          {/* // <button
-          //   onClick={() => {
-          //     addToCartHandler(product);
-          //   }}
-          //   className='button card-button ecom-card-button'
-          // > */}
-          {/* dispatch({
-                type: "ADD_TO_CART",
-                productCard: product,
-              }); */}
-          {/* {isInCart === -1
-              ? "Add to Cart"
-              : "Go To Cart" && navigate("/cart")} */}
-          {/* Add to Cart */}
 
           {isOutOfStock && (
             <span className='overlay-text overlay-text-alignment'>
@@ -130,20 +115,6 @@ const Card = ({ product }) => {
               <i className='fa fa-heart-o icon-btn icon-size icon-overlay'></i>
             </Link>
           )}
-          {/* <i class="fa fa-heart"></i> */}
-          {/* <i
-            onClick={
-              
-                () => addToWishListApi(product)
-              : (
-                <Link to='/login'>
-                  <i className='fa fa-heart-o icon-btn icon-size icon-overlay'></i>
-                </Link>
-              )
-            }
-            className='fa fa-heart-o icon-btn icon-size icon-overlay'
-          ></i> */}
-          {/* wishListHandler(product) */}
         </div>
       </div>
     </div>

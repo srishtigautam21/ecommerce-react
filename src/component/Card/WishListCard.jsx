@@ -1,23 +1,18 @@
 import "./wishListCard.css";
 import "./card.css";
-import { addToCartToast } from "../../utility/Toastify";
+
 import { useWishList, useCart } from "../index";
 
 const WishListCard = ({ wishlist }) => {
   const { dispatch, addToCart } = useCart();
-  // const { wishlistitem, wishListCount } = wishlist;
+
   const { removeFromWishListApi, wishListState } = useWishList();
-  //removeFromWishListHandler
+
   const { wishlistitem } = wishListState;
 
   const moveToCartHandler = (_id, item) => {
     removeFromWishListApi(_id);
     addToCart(item);
-
-    // dispatch({
-    //   type: "ADD_TO_CART",
-    //   productCard: item,
-    // });
   };
 
   return (
@@ -73,7 +68,6 @@ const WishListCard = ({ wishlist }) => {
                         className='button card-button ecom-card-button'
                         onClick={() => moveToCartHandler(_id, item)}
                       >
-                        {/* moveToCartHandler(item) */}
                         Move to Cart
                       </button>
                       <span className='badge-overlay'>

@@ -17,11 +17,7 @@ const Navbar = () => {
 
   const totalCartQuantity = cartlistitem.length;
   const totalWishListQuantity = wishlistitem.length;
-  // console.log(totalCartQuantity);
-  // cartlistitem.reduce(
-  //   (acc, prod) => acc + prod.cartqty,
-  //   0
-  // );
+
   return (
     <div>
       <nav className='nav-component nav-padding'>
@@ -42,11 +38,6 @@ const Navbar = () => {
           </button>
         </div>
         <ul className='nav-list-items-flex'>
-          {/* <li className='list-style link-alignment home-alignment'>
-            <Link className='link ecom-link-color' to='/mockman'>
-              Mockman
-            </Link>
-          </li> */}
           <li className='list-style link-alignment home-alignment'>
             <Link className='link ecom-link-color' to='/'>
               Home
@@ -57,7 +48,8 @@ const Navbar = () => {
               Products
             </Link>
           </li>
-          {/* <NavLinkItems
+          {/* Future TODOs
+          <NavLinkItems
             text='Cart'
             svg={<CartIcon className=' nav-icons' />}
             nxtPage='/products'
@@ -88,7 +80,6 @@ const Navbar = () => {
                 <div className='badge icon-over-badge'>
                   {totalWishListQuantity}
                 </div>
-                {/* {wishlist.wishListCount} */}
               </div>
             </Link>
           </li>
@@ -104,6 +95,7 @@ const Navbar = () => {
 };
 export { Navbar };
 
+//Future TODOs
 // const NavLinkItems = (props) => {
 //   console.log(props.nxtPage);
 //   return (
