@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { loginToast } from "../../../utility/Toastify";
+import { loginToast, errorToast } from "../../../utility/Toastify";
 
 const AuthContext = createContext("");
 
@@ -36,6 +36,7 @@ const AuthProvider = ({ children }) => {
       }, 200);
     } catch (e) {
       console.error(e);
+      errorToast("Invalid email or password");
     }
   };
 

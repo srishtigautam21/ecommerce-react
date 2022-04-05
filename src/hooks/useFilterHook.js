@@ -5,6 +5,14 @@ import {
   getPricingFilter,
 } from "../component/ProductsFilter/ProductFilterFunctions";
 
+/**
+ * custom hook to filter data based on user input
+ *
+ * @param 1.Output from previous function call   2.Filter selected by the user
+ * @returns Final data after all filters are applied
+ *
+ */
+
 const useFilterHook = () => {
   const { filterState } = useCard();
 
