@@ -1,7 +1,11 @@
 import { useContext, createContext, useReducer, useEffect } from "react";
 import { useWishList, useCard } from "../../index";
 import axios from "axios";
-import { addToCartToast, deleteFromCartToast } from "../../../utility/Toastify";
+import {
+  addToCartToast,
+  deleteFromCartToast,
+  errorToast,
+} from "../../../utility/Toastify";
 
 const CartContext = createContext({});
 
@@ -65,6 +69,7 @@ const CartProvider = ({ children }) => {
       addToCartToast("Added To Cart");
     } catch (e) {
       console.error(e);
+      errorToast("Some Unwanted error occured");
     }
   };
 
@@ -80,6 +85,7 @@ const CartProvider = ({ children }) => {
       deleteFromCartToast("Removed From Cart");
     } catch (e) {
       console.error(e);
+      errorToast("Some Unwanted error occured");
     }
   };
 
@@ -99,6 +105,7 @@ const CartProvider = ({ children }) => {
       dispatch({ type: "INCREMENT", productCard: response.data.cart });
     } catch (e) {
       console.error(e);
+      errorToast("Some Unwanted error occured");
     }
   };
 
@@ -114,6 +121,7 @@ const CartProvider = ({ children }) => {
       dispatch({ type: "DECREMENT", productCard: response.data.cart });
     } catch (e) {
       console.error(e);
+      errorToast("Some Unwanted error occured");
     }
   };
 

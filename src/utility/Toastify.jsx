@@ -37,10 +37,19 @@ const deleteFromCartToast = (text) => {
   });
 };
 
+const errorToast = (text) => {
+  toast.error(text, {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+  });
+};
+
 export {
   loginToast,
   addToWishListToast,
   deleteFromWishListToast,
   addToCartToast,
   deleteFromCartToast,
+  errorToast,
 };

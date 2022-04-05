@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("nurishToken", response.data.encodedToken);
 
       setUserLoggedIn(true);
-      // setLoginUser({ email: "", password: "" });    //Kept this for future use
+
       loginToast("Login Successful");
       setTimeout(() => {
         navigate("/products");

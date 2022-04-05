@@ -52,6 +52,7 @@ const WishListProvider = ({ children }) => {
       addToWishListToast("Added to WishList");
     } catch (e) {
       console.error(e);
+      errorToast("Some Unwanted error occured");
     }
   };
   const removeFromWishListApi = async (productId) => {
@@ -74,6 +75,7 @@ const WishListProvider = ({ children }) => {
       deleteFromWishListToast("Removed from wishList");
     } catch (e) {
       console.error(e);
+      errorToast("Some Unwanted error occured");
     }
   };
 
