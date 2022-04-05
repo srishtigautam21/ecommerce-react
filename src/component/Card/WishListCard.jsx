@@ -4,7 +4,7 @@ import "./card.css";
 import { useWishList, useCart } from "../index";
 
 const WishListCard = ({ wishlist }) => {
-  const { dispatch, addToCart } = useCart();
+  const { addToCart } = useCart();
 
   const { removeFromWishListApi, wishListState } = useWishList();
 
