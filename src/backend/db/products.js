@@ -70,7 +70,7 @@ export const products = [
     priceBeforeDiscount: 750,
     discPerc: 20,
     categoryName: "Nutritional Nuts",
-    ratings: 4,
+    ratings: 2,
     sale: true,
     isOutOfStock: false,
   },
@@ -121,7 +121,7 @@ export const products = [
     image: Images.onions,
     discount: false,
     categoryName: "Vegetables",
-    ratings: 4,
+    ratings: 1,
     isOutOfStock: false,
   },
   {

@@ -1,3 +1,10 @@
+/***
+ * This function filters products based on categories
+ * @params - array of products and array of category filter selected by user
+ * @return - filtered products based on categories
+ *
+ */
+
 const getCategoryFilter = (updatedProductList, filterByCategories) => {
   if (filterByCategories.length > 0) {
     return updatedProductList.filter((product) =>
@@ -8,6 +15,13 @@ const getCategoryFilter = (updatedProductList, filterByCategories) => {
   }
 };
 
+/***
+ * This function filters products based on ratingsSlider
+ * @params - array of products  and rating selected by user
+ * @return - filtered products based on ratings
+ *
+ */
+
 const getRatingFilter = (categoryFilterData, filterByRatingSlider) => {
   if (filterByRatingSlider === 0) {
     return categoryFilterData;
@@ -17,6 +31,13 @@ const getRatingFilter = (categoryFilterData, filterByRatingSlider) => {
     );
   }
 };
+
+/***
+ * This function filters products based on price
+ * @params - array of products and "high to low" or "low to high" input selected by user
+ * @return - filtered products based on price
+ *
+ */
 
 const getPricingFilter = (ratingFilterData, sortByPrice) => {
   if (sortByPrice === "lowToHigh") {

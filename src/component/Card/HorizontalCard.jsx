@@ -59,7 +59,26 @@ const CartPageCard = ({ product, dispatch, state }) => {
           <div className='quantity'>
             <p className='quant-font-size'>Quantity</p>
             <div className='plus-minus-button'>
-              <button
+              {product.qty === 1 ? (
+                <button
+                  className='horizontal-s-pd'
+                  onClick={() => deleteFromCart(_id)}
+                >
+                  <i className='fa fa-trash'></i>
+                </button>
+              ) : (
+                <button
+                  onClick={
+                    product.qty > 1
+                      ? () => decreaseQuantity(_id)
+                      : () => deleteFromCart(_id)
+                  }
+                  className='q-circle-btn'
+                >
+                  <i className='fa fa-minus'></i>
+                </button>
+              )}
+              {/* <button
                 onClick={
                   product.qty > 1
                     ? () => decreaseQuantity(_id)
@@ -68,7 +87,7 @@ const CartPageCard = ({ product, dispatch, state }) => {
                 className='q-circle-btn'
               >
                 <i className='fa fa-minus'></i>
-              </button>
+              </button> */}
               <p className='q-num-box'>{product.qty}</p>
 
               <button
