@@ -1,6 +1,6 @@
 import "./wishListCard.css";
 import "./card.css";
-
+import { addToCartToast } from "../../utility/Toastify";
 import { useWishList, useCart } from "../index";
 
 const WishListCard = ({ wishlist }) => {
@@ -13,6 +13,7 @@ const WishListCard = ({ wishlist }) => {
   const moveToCartHandler = (_id, item) => {
     removeFromWishListApi(_id);
     addToCart(item);
+
     // dispatch({
     //   type: "ADD_TO_CART",
     //   productCard: item,

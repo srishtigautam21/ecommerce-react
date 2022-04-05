@@ -1,6 +1,11 @@
 import { useContext, useState, createContext, useReducer } from "react";
-import { useAuth } from "../../index";
+
 import axios from "axios";
+import {
+  addToWishListToast,
+  deleteFromWishListToast,
+} from "../../../utility/Toastify";
+
 const WishListContext = createContext({});
 
 const WishListProvider = ({ children }) => {
@@ -81,6 +86,7 @@ const WishListProvider = ({ children }) => {
         payload: response.data.wishlist,
       });
       console.log(response.data.wishlist);
+      addToWishListToast("Added to WishList");
     } catch (e) {
       console.error(e);
     }
@@ -102,6 +108,7 @@ const WishListProvider = ({ children }) => {
         type: "REMOVE_FROM_WISHLIST",
         payload: response.data.wishlist,
       });
+      deleteFromWishListToast("Removed from wishList");
     } catch (e) {
       console.error(e);
     }

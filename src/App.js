@@ -10,6 +10,7 @@ import {
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "./toastify.css";
 import Mockman from "mockman-js";
 
 function App() {

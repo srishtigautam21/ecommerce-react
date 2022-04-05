@@ -4,17 +4,43 @@ import "react-toastify/dist/ReactToastify.css";
 const loginToast = (text) => {
   toast.success(text, {
     position: "top-right",
-    autoClose: 1000,
+    autoClose: 1500,
     closeOnClick: true,
   });
 };
 
-const wishListToast = (text) => {
-  toast.default(text, {
+const addToWishListToast = (text) => {
+  toast.success(text, {
     position: "top-right",
-    autoClose: 5000,
-
+    autoClose: 1500,
     closeOnClick: true,
   });
 };
-export { loginToast, wishListToast };
+const deleteFromWishListToast = (text) => {
+  toast.warn(text, {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+  });
+};
+const addToCartToast = (text) => {
+  toast.success(text, {
+    position: "top-right",
+    autoClose: 1500,
+  });
+};
+const deleteFromCart = (text) => {
+  toast.warn(text, {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+  });
+};
+
+export {
+  loginToast,
+  addToWishListToast,
+  deleteFromWishListToast,
+  addToCartToast,
+  deleteFromCart,
+};

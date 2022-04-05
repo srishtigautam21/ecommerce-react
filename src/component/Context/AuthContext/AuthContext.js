@@ -31,11 +31,11 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("nurishToken", response.data.encodedToken);
       // console.log("auth", response.data.encodedToken);
       setUserLoggedIn(true);
-      setLoginUser({ email: "", password: "" });
+      // setLoginUser({ email: "", password: "" });    //Kept this for future use
       loginToast("Login Successful");
       setTimeout(() => {
         navigate("/products");
-      }, 300);
+      }, 200);
     } catch (e) {
       console.error(e);
     }

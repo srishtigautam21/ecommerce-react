@@ -1,6 +1,7 @@
 import { useContext, createContext, useReducer, useEffect } from "react";
 import { useWishList, useCard } from "../../index";
 import axios from "axios";
+import { addToCartToast, deleteFromCart } from "../../../utility/Toastify";
 
 const CartContext = createContext({});
 
@@ -120,6 +121,7 @@ const CartProvider = ({ children }) => {
       // const res = response.data.cart.find((p) => p._id === product._id);
       // console.log(res);
       dispatch({ type: "ADD_TO_CART", productCard: response.data.cart });
+      addToCartToast("Added To Cart");
       // dispatch({ type: "ADD_TO_CART", productCard: response.data.cart });
     } catch (e) {
       console.error(e);
@@ -136,6 +138,7 @@ const CartProvider = ({ children }) => {
       );
       console.log("delete api response", response);
       dispatch({ type: "REMOVE_FROM_CART", productCard: response.data.cart });
+      deleteFromCart("Removed From Cart");
     } catch (e) {
       console.error(e);
     }

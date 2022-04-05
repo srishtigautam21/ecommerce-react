@@ -23,7 +23,6 @@ const CartPageCard = ({ product, dispatch, state }) => {
     // const isProdInWishList = wishlistitem.findIndex(
     //   (prod) => prod._id === product._id
     // );
-
     deleteFromCart(_id);
     addToWishListApi(product);
   };
