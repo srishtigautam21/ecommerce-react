@@ -1,8 +1,10 @@
 import { Card, ProductsFilter, useCard } from "../../component";
 import "./productPage.css";
 import { useFilterHook } from "../../hooks/useFilterHook";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const ProductPage = () => {
+  useDocumentTitle("ProductPage");
   const { products, filterState } = useCard();
   const pricingFilterData = useFilterHook();
 

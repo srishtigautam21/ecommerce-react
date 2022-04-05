@@ -1,9 +1,27 @@
-import { useWishList, useCart } from "../index";
+import { Link } from "react-router-dom";
+import { useWishList, useCart, useCard, useAuth } from "../index";
 import "./card.css";
 
 const Card = ({ product }) => {
-  const { wishListHandler } = useWishList();
-  const { state, dispatch } = useCart();
+  const {
+    wishListHandler,
+    addToWishListApi,
+    wishListState,
+    removeFromWishListApi,
+  } = useWishList();
+  const { state, dispatch, addToCart } = useCart();
+  const { cartlistitem } = state;
+  const { wishlistitem } = wishListState;
+  const { isUserLoggedIn } = useAuth();
+
+  const isInCart = cartlistitem.findIndex((prod) => prod._id === product._id);
+  const isInWishList = wishlistitem.findIndex(
+    (prod) => prod._id === product._id
+  );
+
+  const addToCartHandler = (product) => {
+    addToCart(product);
+  };
   const {
     _id,
     name,
@@ -47,17 +65,31 @@ const Card = ({ product }) => {
             <span className='fa fa-star checked'></span>
             <span className='xs-margin'>|</span>5
           </div>
-          <button
-            onClick={() => {
-              dispatch({
-                type: "ADD_TO_CART",
-                productCard: product,
-              });
-            }}
-            className='button card-button ecom-card-button'
-          >
-            Add to Cart
-          </button>
+          {isUserLoggedIn === true ? (
+            isInCart === -1 ? (
+              <button
+                onClick={() => {
+                  addToCartHandler(product);
+                }}
+                className='button card-button ecom-card-button'
+              >
+                Add To Cart
+              </button>
+            ) : (
+              <Link to='/cart'>
+                <button className='button outline-button card-button ecom-card-button'>
+                  Go To Cart
+                </button>
+              </Link>
+            )
+          ) : (
+            <Link to='/login'>
+              <button className='button card-button ecom-card-button'>
+                Add To Cart
+              </button>
+            </Link>
+          )}
+
           {isOutOfStock && (
             <span className='overlay-text overlay-text-alignment'>
               Out of Stock
@@ -66,11 +98,23 @@ const Card = ({ product }) => {
           <span className='badge-overlay'>
             {newItem === true ? "New" : sale === true ? "Sale" : null}
           </span>
-
-          <i
-            onClick={() => wishListHandler(product)}
-            className='fa fa-heart-o icon-btn icon-size icon-overlay'
-          ></i>
+          {isUserLoggedIn === true ? (
+            isInWishList === -1 ? (
+              <i
+                className='fa fa-heart-o icon-btn icon-size icon-overlay'
+                onClick={() => addToWishListApi(product)}
+              ></i>
+            ) : (
+              <i
+                class='fa fa-heart icon-btn icon-size filled-icon-overlay'
+                onClick={() => removeFromWishListApi(_id)}
+              ></i>
+            )
+          ) : (
+            <Link to='/login'>
+              <i className='fa fa-heart-o icon-btn icon-size icon-overlay'></i>
+            </Link>
+          )}
         </div>
       </div>
     </div>

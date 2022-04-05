@@ -15,8 +15,20 @@
   margin: 4.9rem 2rem 0 0;
 }
 .ecom-input {
-  max-width: 25rem;
+  max-width: 100%;
+  /* max-width: 25rem; */
   width: 100%;
+}
+.input-update {
+  padding: 7px 7px;
+  border: 2px solid var(--BOX-SHADOW-LIGHTER);
+}
+.search-btn {
+  padding: 0 5px 0 5px;
+  cursor: pointer;
+  background-color: var(--COLOR-PRIMARY);
+  color: var(--COLOR-WHITE);
+  border: 0;
 }
 .link:hover {
   cursor: pointer;

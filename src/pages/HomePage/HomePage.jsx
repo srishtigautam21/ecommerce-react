@@ -6,8 +6,10 @@ import FruitImage from "../../Assets/Images/mango.jpg";
 import NutsImage from "../../Assets/Images/mixed nuts.jpg";
 import GrainsImage from "../../Assets/Images/quinoa.jpg";
 import { useCard } from "../../component/Context/CardContext/CardContext";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const HomePage = () => {
+  useDocumentTitle("HomePage");
   const { filterDispatch, initialFilterState } = useCard();
   const navigate = useNavigate();
 

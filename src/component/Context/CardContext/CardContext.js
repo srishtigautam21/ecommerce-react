@@ -75,7 +75,12 @@ const CardProvider = ({ children }) => {
 
   return (
     <CardContext.Provider
-      value={{ products, filterDispatch, filterState, initialFilterState }}
+      value={{
+        products,
+        filterDispatch,
+        filterState,
+        initialFilterState,
+      }}
     >
       {children}
     </CardContext.Provider>

@@ -1,61 +1,38 @@
-import { useContext, createContext, useReducer } from "react";
-import { useWishList } from "../../index";
+import { useContext, createContext, useReducer, useEffect } from "react";
+import { useWishList, useCard } from "../../index";
+import axios from "axios";
+import {
+  addToCartToast,
+  deleteFromCartToast,
+  errorToast,
+} from "../../../utility/Toastify";
 
 const CartContext = createContext({});
 
 const CartProvider = ({ children }) => {
   const { setWishList, wishlist } = useWishList();
+  const { products } = useCard();
 
   const cartReducer = (state, action) => {
     switch (action.type) {
       case "ADD_TO_CART":
-        const index = state.cartlistitem.findIndex(
-          (i) => i._id === action.productCard._id
-        );
-        return index === -1
-          ? {
-              ...state,
-              cartCount: state.cartCount + 1,
-              cartlistitem: [
-                ...state.cartlistitem,
-                { ...action.productCard, cartqty: 1 },
-              ],
-            }
-          : {
-              ...state,
-              cartlistitem: state.cartlistitem.map((i) =>
-                i._id === action.productCard._id //i se pura cart list ke cards aare hai aur action.productCard
-                  ? //vo specific card jispe hum add to cart click kar re hai vo aata hai
-                    {
-                      ...i, // ...action.productCard,
-                      cartqty: i.cartqty + 1, //action.productCard.cartqty + 1
-                    }
-                  : i
-              ),
-            };
+        return {
+          ...state,
+          cartlistitem: action.productCard,
+        };
+
       case "INCREMENT":
         return {
           ...state,
-          cartlistitem: state.cartlistitem.map((i) =>
-            i._id === action.productCard._id
-              ? {
-                  ...i,
-                  cartqty: i.cartqty + 1,
-                }
-              : i
-          ),
+          cartlistitem: action.productCard,
         };
+
       case "DECREMENT":
         return {
           ...state,
-          cartlistitem: state.cartlistitem.map((i) =>
-            i._id === action.productCard._id
-              ? i.cartqty < 1
-                ? { ...i, cartqty: 1 }
-                : { ...i, cartqty: i.cartqty - 1 }
-              : i
-          ),
+          cartlistitem: action.productCard,
         };
+
       case "MOVE_TO_CART":
         return {
           ...state,
@@ -64,10 +41,9 @@ const CartProvider = ({ children }) => {
       case "REMOVE_FROM_CART":
         return {
           ...state,
-          cartlistitem: state.cartlistitem.filter(
-            (i) => i._id !== action.productCard._id
-          ),
+          cartlistitem: action.productCard,
         };
+
       default:
         return state;
     }
@@ -80,8 +56,86 @@ const CartProvider = ({ children }) => {
   };
   const [state, dispatch] = useReducer(cartReducer, cartObj);
 
+  const addToCart = async (product) => {
+    const encodedToken = localStorage.getItem("nurishToken");
+    const config = { headers: { authorization: encodedToken } };
+    try {
+      const response = await axios.post(
+        "/api/user/cart",
+        { product: product },
+        config
+      );
+      dispatch({ type: "ADD_TO_CART", productCard: response.data.cart });
+      addToCartToast("Added To Cart");
+    } catch (e) {
+      console.error(e);
+      errorToast("Some Unwanted error occured");
+    }
+  };
+
+  const deleteFromCart = async (productId) => {
+    const encodedToken = localStorage.getItem("nurishToken");
+    const config = { headers: { authorization: encodedToken } };
+    try {
+      const response = await axios.delete(
+        `/api/user/cart/${productId}`,
+        config
+      );
+      dispatch({ type: "REMOVE_FROM_CART", productCard: response.data.cart });
+      deleteFromCartToast("Removed From Cart");
+    } catch (e) {
+      console.error(e);
+      errorToast("Some Unwanted error occured");
+    }
+  };
+
+  const increaseQuantity = async (productId) => {
+    const encodedToken = localStorage.getItem("nurishToken");
+    const config = {
+      headers: {
+        authorization: encodedToken,
+      },
+    };
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${productId}`,
+        { action: { type: "increment" } },
+        config
+      );
+      dispatch({ type: "INCREMENT", productCard: response.data.cart });
+    } catch (e) {
+      console.error(e);
+      errorToast("Some Unwanted error occured");
+    }
+  };
+
+  const decreaseQuantity = async (productId) => {
+    try {
+      const encodedToken = localStorage.getItem("nurishToken");
+      const config = { headers: { authorization: encodedToken } };
+      const response = await axios.post(
+        `/api/user/cart/${productId}`,
+        { action: { type: "decrement" } },
+        config
+      );
+      dispatch({ type: "DECREMENT", productCard: response.data.cart });
+    } catch (e) {
+      console.error(e);
+      errorToast("Some Unwanted error occured");
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ state, dispatch }}>
+    <CartContext.Provider
+      value={{
+        state,
+        dispatch,
+        addToCart,
+        deleteFromCart,
+        increaseQuantity,
+        decreaseQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

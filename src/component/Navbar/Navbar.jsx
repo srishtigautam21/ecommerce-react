@@ -1,18 +1,23 @@
-import { CartIcon, HeartIcon, UserIcon } from "../../Assets/Svg/allsvg";
+import {
+  CartIcon,
+  HeartIcon,
+  UserIcon,
+  SearchIcon,
+} from "../../Assets/Svg/allsvg";
 import "./navbar.css";
 import Logo from "../../Assets/Svg/logo.svg";
 import { Link } from "react-router-dom";
 import { useWishList, useCart } from "../index";
 
 const Navbar = () => {
-  const { wishlist } = useWishList();
+  const { wishListState } = useWishList();
   const { state } = useCart();
   const { cartlistitem } = state;
+  const { wishlistitem } = wishListState;
 
-  const totalCartQuantity = cartlistitem.reduce(
-    (acc, prod) => acc + prod.cartqty,
-    0
-  );
+  const totalCartQuantity = cartlistitem.length;
+  const totalWishListQuantity = wishlistitem.length;
+
   return (
     <div>
       <nav className='nav-component nav-padding'>
@@ -23,8 +28,14 @@ const Navbar = () => {
           <img src={Logo} alt='logo' />
         </div>
         <div className='search-bar'>
-          <input className='input ecom-input' placeholder='Type to search' />
-          <button className='search-button'>Search</button>
+          <input
+            className='input-update ecom-input'
+            placeholder='Type to search'
+          />
+
+          <button className='search-btn'>
+            <SearchIcon />
+          </button>
         </div>
         <ul className='nav-list-items-flex'>
           <li className='list-style link-alignment home-alignment'>
@@ -37,7 +48,8 @@ const Navbar = () => {
               Products
             </Link>
           </li>
-          {/* <NavLinkItems
+          {/* Future TODOs
+          <NavLinkItems
             text='Cart'
             svg={<CartIcon className=' nav-icons' />}
             nxtPage='/products'
@@ -55,7 +67,9 @@ const Navbar = () => {
             <Link className='link ecom-link-color' to='/cart'>
               <div className='ecom-badge-wrapper'>
                 <CartIcon className=' nav-icons' />
-                <div className='badge icon-over-badge'>{totalCartQuantity}</div>
+                <div className='badge icon-over-badge'>
+                  {Number(totalCartQuantity)}
+                </div>
               </div>
             </Link>
           </li>
@@ -64,13 +78,13 @@ const Navbar = () => {
               <div className='ecom-badge-wrapper'>
                 <HeartIcon className='nav-icons' />
                 <div className='badge icon-over-badge'>
-                  {wishlist.wishListCount}
+                  {totalWishListQuantity}
                 </div>
               </div>
             </Link>
           </li>
           <li className='list-style icons-alignment lg-margin-top'>
-            <Link className='link ecom-link-color' to='/products'>
+            <Link className='link ecom-link-color' to='/login'>
               <UserIcon className='nav-icons' />
             </Link>
           </li>
@@ -81,6 +95,7 @@ const Navbar = () => {
 };
 export { Navbar };
 
+//Future TODOs
 // const NavLinkItems = (props) => {
 //   console.log(props.nxtPage);
 //   return (

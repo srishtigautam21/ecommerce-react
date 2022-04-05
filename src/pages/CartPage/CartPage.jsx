@@ -1,11 +1,14 @@
 import { CartPageCard, useCart, PriceCard } from "../../component";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import "./cartPage.css";
 
 const CartPage = () => {
-  const { state, dispatch } = useCart();
+  useDocumentTitle("CartPage");
+  const { state, dispatch, addToCart } = useCart();
   const { cartlistitem } = state;
 
   return (
-    <>
+    <div className='cart-page-ht'>
       <h1 className='cart-page-header'>My Cart</h1>
       <h2 className='cart-page-header'>
         Your Cart has {cartlistitem.length} Items
@@ -25,7 +28,7 @@ const CartPage = () => {
         </div>
         {state.cartlistitem.length > 0 && <PriceCard state={state} />}
       </main>
-    </>
+    </div>
   );
 };
 export { CartPage };

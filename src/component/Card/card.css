@@ -39,3 +39,15 @@
 .red-heart-color {
   color: var(--ALERT-ERROR-COLOR);
 }
+.filled-icon-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 5px;
+  background-color: var(--COLOR-WHITE);
+  height: 2.5rem;
+  width: 2.7rem;
+  border-radius: 50%;
+  padding: 3px 0 0 3.5px;
+  cursor: pointer;
+  color: var(--ALERT-ERROR-COLOR);
+}

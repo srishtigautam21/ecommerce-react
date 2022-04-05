@@ -106,10 +106,12 @@ export const removeItemFromCartHandler = function (schema, request) {
 
 export const updateCartItemHandler = function (schema, request) {
   const productId = request.params.productId;
+  // console.log(productId, request);
   const userId = requiresAuth.call(this, request);
+  // console.log("user id", userId);
   try {
     if (!userId) {
-      new Response(
+      return new Response(
         404,
         {},
         {
@@ -118,8 +120,11 @@ export const updateCartItemHandler = function (schema, request) {
       );
     }
     const userCart = schema.users.findBy({ _id: userId }).cart;
+    // console.log(userCart);
     const { action } = JSON.parse(request.requestBody);
+    // console.log(action);
     if (action.type === "increment") {
+      // console.log("inc");
       userCart.forEach((product) => {
         if (product._id === productId) {
           product.qty += 1;
@@ -138,6 +143,7 @@ export const updateCartItemHandler = function (schema, request) {
     return new Response(200, {}, { cart: userCart });
   } catch (error) {
     return new Response(
+      // return was not used in above line before
       500,
       {},
       {

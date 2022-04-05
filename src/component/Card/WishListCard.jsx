@@ -4,22 +4,22 @@ import "./card.css";
 import { useWishList, useCart } from "../index";
 
 const WishListCard = ({ wishlist }) => {
-  const { dispatch } = useCart();
-  const { wishlistitem, wishListCount } = wishlist;
-  const { removeFromWishListHandler } = useWishList();
-  const moveToCartHandler = (item) => {
-    removeFromWishListHandler(item);
-    dispatch({
-      type: "ADD_TO_CART",
-      productCard: item,
-    });
+  const { addToCart } = useCart();
+
+  const { removeFromWishListApi, wishListState } = useWishList();
+
+  const { wishlistitem } = wishListState;
+
+  const moveToCartHandler = (_id, item) => {
+    removeFromWishListApi(_id);
+    addToCart(item);
   };
 
   return (
     <div className='h-100'>
       <h1 className='cart-page-header'>My WishList</h1>
       <h2 className='cart-page-header'>
-        Your Wishlist has {wishListCount} items
+        Your Wishlist has {wishlistitem.length} items
       </h2>
       <div className='vertical-cards'>
         {wishlistitem.map((item) => {
@@ -38,7 +38,7 @@ const WishListCard = ({ wishlist }) => {
             newItem = false,
           } = item;
           return (
-            <div>
+            <div key={_id}>
               <div className='wishlistCard-container  w-100'>
                 <div className=' card-container bottom-margin'>
                   <div className='parent-positioning'>
@@ -66,7 +66,7 @@ const WishListCard = ({ wishlist }) => {
                       </div>
                       <button
                         className='button card-button ecom-card-button'
-                        onClick={() => moveToCartHandler(item)}
+                        onClick={() => moveToCartHandler(_id, item)}
                       >
                         Move to Cart
                       </button>
@@ -74,7 +74,7 @@ const WishListCard = ({ wishlist }) => {
                         {newItem ? "New" : sale ? "Sale" : null}
                       </span>
                       <i
-                        onClick={() => removeFromWishListHandler(item)}
+                        onClick={() => removeFromWishListApi(_id)}
                         className='fa fa-heart-o icon-btn icon-size icon-overlay contained'
                       ></i>
                     </div>

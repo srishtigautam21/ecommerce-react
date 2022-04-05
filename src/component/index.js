@@ -11,6 +11,7 @@ import { WishListCard } from "./Card/WishListCard";
 import { CartPageCard } from "./Card/HorizontalCard";
 import { CartProvider, useCart } from "./Context/CartContext/CartContext";
 import { PriceCard } from "./Card/PriceCard";
+import { AuthProvider, useAuth } from "./Context/AuthContext/AuthContext";
 
 export {
   Navbar,
@@ -26,4 +27,6 @@ export {
   CartProvider,
   useCart,
   PriceCard,
+  AuthProvider,
+  useAuth,
 };
