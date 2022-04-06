@@ -8,7 +8,7 @@ const LoginPage = () => {
   const { loginHandler, setLoginUser, loginUser } = useAuth();
   const { email, password } = loginUser;
   return (
-    <div className='login-signup-page'>
+    <div className='login-signup-page height-100'>
       <form className='input-form login'>
         <h1 className='login-bottom-margin text-center'>Login</h1>
         <label htmlFor='email-input' className='label-font-size'>

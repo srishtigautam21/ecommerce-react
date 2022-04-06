@@ -20,7 +20,6 @@ const CartPageCard = ({ product, dispatch, state }) => {
   );
 
   const moveToWishListHandler = (product) => {
-    deleteFromCart(_id);
     addToWishListApi(product);
   };
 
@@ -78,16 +77,7 @@ const CartPageCard = ({ product, dispatch, state }) => {
                   <i className='fa fa-minus'></i>
                 </button>
               )}
-              {/* <button
-                onClick={
-                  product.qty > 1
-                    ? () => decreaseQuantity(_id)
-                    : () => deleteFromCart(_id)
-                }
-                className='q-circle-btn'
-              >
-                <i className='fa fa-minus'></i>
-              </button> */}
+
               <p className='q-num-box'>{product.qty}</p>
 
               <button

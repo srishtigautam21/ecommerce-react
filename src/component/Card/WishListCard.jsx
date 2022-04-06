@@ -1,17 +1,15 @@
 import "./wishListCard.css";
 import "./card.css";
-
+import { Link } from "react-router-dom";
 import { useWishList, useCart } from "../index";
 
 const WishListCard = ({ wishlist }) => {
-  const { addToCart } = useCart();
-
+  const { addToCart, state, deleteFromCart } = useCart();
+  const { cartlistitem } = state;
   const { removeFromWishListApi, wishListState } = useWishList();
-
   const { wishlistitem } = wishListState;
 
   const moveToCartHandler = (_id, item) => {
-    removeFromWishListApi(_id);
     addToCart(item);
   };
 
@@ -64,18 +62,28 @@ const WishListCard = ({ wishlist }) => {
                         <span className='fa fa-star checked'></span>
                         <span className='xs-margin'>|</span>5
                       </div>
-                      <button
-                        className='button card-button ecom-card-button'
-                        onClick={() => moveToCartHandler(_id, item)}
-                      >
-                        Move to Cart
-                      </button>
+                      {cartlistitem.findIndex(
+                        (prod) => prod._id === item._id
+                      ) === -1 ? (
+                        <button
+                          className='button card-button ecom-card-button'
+                          onClick={() => moveToCartHandler(_id, item)}
+                        >
+                          Move to Cart
+                        </button>
+                      ) : (
+                        <Link to='/cart'>
+                          <button className='button card-button  ecom-card-button'>
+                            Go to Cart
+                          </button>
+                        </Link>
+                      )}
                       <span className='badge-overlay'>
                         {newItem ? "New" : sale ? "Sale" : null}
                       </span>
                       <i
                         onClick={() => removeFromWishListApi(_id)}
-                        className='fa fa-heart-o icon-btn icon-size icon-overlay contained'
+                        className='fa fa-heart icon-btn icon-size filled-icon-overlay'
                       ></i>
                     </div>
                   </div>
