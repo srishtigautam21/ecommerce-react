@@ -27,7 +27,7 @@ const getRatingFilter = (categoryFilterData, filterByRatingSlider) => {
     return categoryFilterData;
   } else {
     return categoryFilterData.filter(
-      (product) => product.ratings === filterByRatingSlider
+      (product) => product.ratings <= filterByRatingSlider
     );
   }
 };

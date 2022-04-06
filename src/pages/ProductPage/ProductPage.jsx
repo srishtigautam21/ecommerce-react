@@ -9,7 +9,7 @@ const ProductPage = () => {
   const pricingFilterData = useFilterHook();
 
   return (
-    <div className='product-container '>
+    <div className='product-container'>
       <aside className='position-fixed sidebar-flex'>
         <ProductsFilter />
       </aside>

@@ -4,6 +4,9 @@
   align-items: center;
   margin: 3rem 0;
 }
+.height-100 {
+  min-height: 100vh;
+}
 .login {
   max-width: 33rem;
   min-height: 36rem;
