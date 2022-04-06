@@ -1,6 +1,6 @@
 import "./wishListCard.css";
 import "./card.css";
-
+import { Link } from "react-router-dom";
 import { useWishList, useCart } from "../index";
 
 const WishListCard = ({ wishlist }) => {
@@ -72,12 +72,12 @@ const WishListCard = ({ wishlist }) => {
                           Move to Cart
                         </button>
                       ) : (
-                        <button
-                          className='button card-button  ecom-card-button'
-                          onClick={() => deleteFromCart(_id)}
-                        >
-                          Remove from Cart
-                        </button>
+                        <Link to='/cart'>
+                          <button className='button card-button  ecom-card-button'>
+                            Go to Cart
+                          </button>
+                        </Link>
+                        // onClick={() => deleteFromCart(_id)}
                       )}
 
                       <span className='badge-overlay'>
@@ -86,7 +86,6 @@ const WishListCard = ({ wishlist }) => {
                       <i
                         onClick={() => removeFromWishListApi(_id)}
                         className='fa fa-heart icon-btn icon-size filled-icon-overlay'
-                        // fa fa-heart-o icon-btn icon-size icon-overlay contained
                       ></i>
                     </div>
                   </div>
