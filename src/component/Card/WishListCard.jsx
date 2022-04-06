@@ -77,9 +77,7 @@ const WishListCard = ({ wishlist }) => {
                             Go to Cart
                           </button>
                         </Link>
-                        // onClick={() => deleteFromCart(_id)}
                       )}
-
                       <span className='badge-overlay'>
                         {newItem ? "New" : sale ? "Sale" : null}
                       </span>
