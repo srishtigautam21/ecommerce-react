@@ -20,7 +20,6 @@ const CartPageCard = ({ product, dispatch, state }) => {
   );
 
   const moveToWishListHandler = (product) => {
-    deleteFromCart(_id);
     addToWishListApi(product);
   };
 

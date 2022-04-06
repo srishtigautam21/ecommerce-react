@@ -9,10 +9,7 @@ const WishListCard = ({ wishlist }) => {
   const { removeFromWishListApi, wishListState } = useWishList();
   const { wishlistitem } = wishListState;
 
-  // const isProdInCart = cartlistitem.findIndex((prod) => prod._id === item._id);
-
   const moveToCartHandler = (_id, item) => {
-    removeFromWishListApi(_id);
     addToCart(item);
   };
 
