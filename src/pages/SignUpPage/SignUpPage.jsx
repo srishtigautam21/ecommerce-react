@@ -1,20 +1,31 @@
 import { Link } from "react-router-dom";
 import "./signUpPage.css";
+import { useAuth } from "../../component";
 
 const SignUpPage = () => {
+  const { signupUser, setSignUpUser } = useAuth();
   return (
     <>
       <div className='login-signup-page'>
         <form className='input-form login'>
           <h1 className='login-bottom-margin text-center'>Sign Up</h1>
-          <label htmlFor='user-name' className='label-font-size'>
-            UserName
+          <label htmlFor='first-name' className='label-font-size'>
+            FirstName
           </label>
           <input
             type='text'
             placeholder='Enter your name'
             className='input-box'
-            id='user-name'
+            id='first-name'
+          />
+          <label htmlFor='last-name' className='label-font-size'>
+            LastName
+          </label>
+          <input
+            type='text'
+            placeholder='Enter your name'
+            className='input-box'
+            id='last-name'
           />
           <label htmlFor='email-input' className='label-font-size'>
             Email Address
@@ -24,6 +35,10 @@ const SignUpPage = () => {
             placeholder='example@xyz.com'
             className='input-box'
             id='email-input'
+            value={signupUser.email}
+            onChange={(e) =>
+              setSignUpUser((prev) => ({ ...prev, email: e.target.value }))
+            }
           />
           <label htmlFor='password1' className='label-font-size'>
             Password
@@ -35,7 +50,7 @@ const SignUpPage = () => {
             id='password1'
             placeholder='********'
           />
-          <label htmlFor='password2' className='label-font-size'>
+          {/* <label htmlFor='password2' className='label-font-size'>
             Confirm Password
           </label>
           <input
@@ -44,7 +59,7 @@ const SignUpPage = () => {
             className='input-box'
             id='password2'
             placeholder='********'
-          />
+          /> */}
           <label>
             <input type='checkbox' name='checkbox' className='checkbox-size' />I
             accept all Terms and Condition

@@ -8,13 +8,14 @@ import "./navbar.css";
 import Logo from "../../Assets/Svg/logo.svg";
 import { Link } from "react-router-dom";
 import { useWishList, useCart } from "../index";
+import { useState } from "react";
 
 const Navbar = () => {
   const { wishListState } = useWishList();
   const { state } = useCart();
   const { cartlistitem } = state;
   const { wishlistitem } = wishListState;
-
+  const [open, setOpen] = useState(false);
   const totalCartQuantity = cartlistitem.length;
   const totalWishListQuantity = wishlistitem.length;
 
@@ -84,9 +85,26 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='list-style icons-alignment lg-margin-top'>
-            <Link className='link ecom-link-color' to='/login'>
-              <UserIcon className='nav-icons' />
-            </Link>
+            {/* <Link className='link ecom-link-color' to='/login'> */}
+            <div className='dropdown'>
+              <UserIcon
+                className='nav-icons'
+                onClick={() => setOpen((open) => !open)}
+              />
+              {/* </Link> */}
+              {open && (
+                <div className='menu-container'>
+                  <div className='menu-content'>
+                    <Link className=' link content-color' to='/profile'>
+                      Profile
+                    </Link>
+                    <Link className='link content-color' to='/login'>
+                      Login
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
           </li>
         </ul>
       </nav>

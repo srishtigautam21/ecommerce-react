@@ -14,9 +14,11 @@ const AuthProvider = ({ children }) => {
     password: "",
   };
   const [loginUser, setLoginUser] = useState({
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
+    email: "",
+    password: "",
   });
+  // email: "adarshbalika@gmail.com",
+  // password: "adarshbalika",
   const [signupUser, setSignUpUser] = useState(authInitialState);
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
 
@@ -62,6 +64,8 @@ const AuthProvider = ({ children }) => {
         loginUser,
         isUserLoggedIn,
         signUpHandler,
+        signupUser,
+        setSignUpUser,
       }}
     >
       {children}

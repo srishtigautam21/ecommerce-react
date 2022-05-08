@@ -42,14 +42,26 @@ const LoginPage = () => {
             <input type='checkbox' name='checkbox' className='checkbox-size' />
             Remember Me
           </label>
-          <p className='red-color forgot-psswrd-margin'>Forgot Password?</p>
+          {/* <p className='red-color forgot-psswrd-margin'>Forgot Password?</p> */}
+          <p
+            onClick={() => {
+              setLoginUser((prev) => ({
+                ...prev,
+                email: "adarshbalika@gmail.com",
+              }));
+              setLoginUser((prev) => ({ ...prev, password: "adarshbalika" }));
+            }}
+            className='test-login forgot-psswrd-margin'
+          >
+            Use Test Credentials
+          </p>
         </div>
 
         <button
           className='button login-button'
           onClick={(e) => loginHandler(e, email, password)}
         >
-          Guest Login
+          Login
         </button>
 
         <Link to='/signup' className='signup-page-link signup-page-link-margin'>
