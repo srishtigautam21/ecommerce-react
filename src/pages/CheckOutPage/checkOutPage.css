@@ -1,0 +1,26 @@
+.checkout-container {
+  width: 60%;
+  height: 40vh;
+  background-color: var(--COLOR-WHITE);
+  box-shadow: 7px 7px 5px var(--BOX-SHADOW-LIGHTER);
+  padding: 3rem;
+  text-align: center;
+}
+.checkout-page {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.order-header {
+  font-weight: 500;
+}
+.order-card-flex-1 {
+  display: flex;
+  justify-content: space-between;
+}
+.order-card-flex-2 {
+  display: flex;
+  gap: 1.5rem;
+}

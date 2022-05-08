@@ -1,6 +1,10 @@
 import "./horizontalCard.css";
+import { Link } from "react-router-dom";
+// import { useCart } from "../../component";
+
 const PriceCard = ({ state }) => {
   const { cartlistitem } = state;
+  // const { priceCard } = useCart();
 
   const initialPriceState = {
     qty: 0,
@@ -54,7 +58,9 @@ const PriceCard = ({ state }) => {
           <p className='m-sm'>
             You will save Rs.{priceCard.discount} on this purchase
           </p>
-          <button className='button order-btn'>Place Order</button>
+          <Link to='/checkout'>
+            <button className='button order-btn'>Procced To Checkout</button>
+          </Link>
         </div>
       )}
     </>

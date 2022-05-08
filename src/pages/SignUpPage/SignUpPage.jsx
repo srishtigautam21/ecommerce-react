@@ -3,7 +3,7 @@ import "./signUpPage.css";
 import { useAuth } from "../../component";
 
 const SignUpPage = () => {
-  const { signupUser, setSignUpUser } = useAuth();
+  const { signupUser, setSignUpUser, signUpHandler } = useAuth();
   return (
     <>
       <div className='login-signup-page'>
@@ -17,6 +17,10 @@ const SignUpPage = () => {
             placeholder='Enter your name'
             className='input-box'
             id='first-name'
+            value={signupUser.firstName}
+            onChange={(e) =>
+              setSignUpUser((prev) => ({ ...prev, firstName: e.target.value }))
+            }
           />
           <label htmlFor='last-name' className='label-font-size'>
             LastName
@@ -26,6 +30,10 @@ const SignUpPage = () => {
             placeholder='Enter your name'
             className='input-box'
             id='last-name'
+            value={signupUser.lastName}
+            onChange={(e) =>
+              setSignUpUser((prev) => ({ ...prev, lastName: e.target.value }))
+            }
           />
           <label htmlFor='email-input' className='label-font-size'>
             Email Address
@@ -49,6 +57,10 @@ const SignUpPage = () => {
             className='input-box'
             id='password1'
             placeholder='********'
+            value={signupUser.password}
+            onChange={(e) =>
+              setSignUpUser((prev) => ({ ...prev, password: e.target.value }))
+            }
           />
           {/* <label htmlFor='password2' className='label-font-size'>
             Confirm Password
@@ -64,7 +76,14 @@ const SignUpPage = () => {
             <input type='checkbox' name='checkbox' className='checkbox-size' />I
             accept all Terms and Condition
           </label>
-          <button className='button login-button'>Create New Account</button>
+          <button
+            className='button login-button'
+            onClick={(e) =>
+              signUpHandler(e, email, password, firstName, lastName)
+            }
+          >
+            Create New Account
+          </button>
           <Link
             to='/login'
             className='signup-page-link signup-page-link-sm-margin'

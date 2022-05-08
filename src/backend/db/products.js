@@ -9,6 +9,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Rolled Oats | Gluten free | Lab Tested",
+    shortName: "Rolled Oats",
     price: 225,
     image: Images.oats,
     discount: false,
@@ -20,6 +21,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Organic Cashew nuts (Kaju)",
+    shortName: "Cashews",
     price: 400,
     image: Images.cashews,
     discount: false,
@@ -30,6 +32,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Organic Quinoa | (500g) | (Salvia hispanica)",
+    shortName: "Quinoa",
     price: 280,
     image: Images.quinoa,
     discount: true,
@@ -43,6 +46,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Fresh | Organic Apples | 2kg",
+    shortName: "Apples",
     price: 300,
     image: Images.apple,
     discount: false,
@@ -54,6 +58,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Organic| Healthy| Chia Seeds | 500g",
+    shortName: "Chia Seeds",
     price: 250,
     image: Images.chiaSeeds,
     discount: false,
@@ -64,6 +69,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Mixed Nuts | 4 Types | (500g)",
+    shortName: "Mixed nuts",
     price: 600,
     image: Images.mixedNuts,
     discount: true,
@@ -77,6 +83,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Fresh StrawBerries | (250g)",
+    shortName: "StrawBerries",
     price: 390,
     image: Images.strawberries,
     discount: false,
@@ -87,6 +94,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Organic Sunflower Seeds | (200g)",
+    shortName: "Sunflower Seeds",
     price: 100,
     image: Images.sunflowerSeeds,
     discount: false,
@@ -97,6 +105,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Organic Flax Seeds | (200g)",
+    shortName: "Flax Seeds",
     price: 50,
     image: Images.flaxSeeds,
     discount: false,
@@ -107,6 +116,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Fresh | Organic Mangoes | (1kg)",
+    shortName: "Mangoes",
     price: 120,
     image: Images.mangoes,
     discount: false,
@@ -117,6 +127,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Farm fresh | Red Onions | (1kg)",
+    shortName: "Red Onions",
     price: 50,
     image: Images.onions,
     discount: false,
@@ -127,6 +138,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Farm fresh | Spinach | (250g)",
+    shortName: "Spinach",
     price: 80,
     image: Images.spinach,
     discount: false,

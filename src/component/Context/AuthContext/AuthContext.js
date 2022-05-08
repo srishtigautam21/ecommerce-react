@@ -29,9 +29,7 @@ const AuthProvider = ({ children }) => {
       const response = await axios.post("/api/auth/login", { email, password });
 
       localStorage.setItem("nurishToken", response.data.encodedToken);
-
       setUserLoggedIn(true);
-
       loginToast("Login Successful");
       setTimeout(() => {
         navigate("/products");
@@ -42,15 +40,24 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const signUpHandler = async () => {
+  const signUpHandler = async (
+    e,
+    email,
+    password,
+    someUserAttribute1,
+    someUserAttribute2
+  ) => {
+    e.preventDefault();
     try {
       const response = await axios.post("/api/auth/signup", {
-        firstName,
-        lastName,
         email,
         password,
+        someUserAttribute1,
+        someUserAttribute2,
       });
       localStorage.setItem("nurishToken", response.data.encodedToken);
+      console.log(response.data.encodedToken);
+      console.log(response.data.user);
     } catch (e) {
       console.error(e);
     }

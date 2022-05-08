@@ -10,8 +10,8 @@ const ProfilePage = () => {
         <Link className='link link-color' to='/profile'>
           Profile
         </Link>
-        <div className='divider'></div>
-        <p>Address</p>
+        {/* <div className='divider'></div>
+        <p>Address</p> */}
         <div className='divider'></div>
         <p>My Orders</p>
       </div>
