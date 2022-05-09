@@ -1,6 +1,6 @@
 .checkout-container {
   width: 60%;
-  height: 40vh;
+  min-height: 40vh;
   background-color: var(--COLOR-WHITE);
   box-shadow: 7px 7px 5px var(--BOX-SHADOW-LIGHTER);
   padding: 3rem;
@@ -16,11 +16,39 @@
 .order-header {
   font-weight: 500;
 }
+.order-header-margin {
+  margin-bottom: 2rem;
+  color: var(--COLOR-PRIMARY);
+}
 .order-card-flex-1 {
   display: flex;
   justify-content: space-between;
+  padding: 1rem;
 }
 .order-card-flex-2 {
   display: flex;
   gap: 1.5rem;
 }
+.coupan-btn {
+  border: 1px solid var(--BOX-SHADOW-LIGHTER);
+  background-color: var(--COLOR-PRIMARY);
+  width: 7rem;
+}
+.coupan-pd {
+  padding: 7px;
+  color: var(--COLOR-WHITE);
+}
+.left-text {
+  text-align: left;
+  margin: 7px;
+}
+.coupan-input {
+  width: 35rem;
+}
+.item-width {
+  width: 12rem;
+}
+/* .s-width {
+}
+.qty-width {
+} */

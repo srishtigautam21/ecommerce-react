@@ -7,7 +7,7 @@ import {
 import "./navbar.css";
 import Logo from "../../Assets/Svg/logo.svg";
 import { Link } from "react-router-dom";
-import { useWishList, useCart } from "../index";
+import { useWishList, useCart, useAuth } from "../index";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -15,7 +15,9 @@ const Navbar = () => {
   const { state } = useCart();
   const { cartlistitem } = state;
   const { wishlistitem } = wishListState;
+  const { isUserLoggedIn, logOut } = useAuth();
   const [open, setOpen] = useState(false);
+
   const totalCartQuantity = cartlistitem.length;
   const totalWishListQuantity = wishlistitem.length;
 
@@ -95,12 +97,29 @@ const Navbar = () => {
               {open && (
                 <div className='menu-container'>
                   <div className='menu-content'>
-                    <Link className=' link content-color' to='/profile'>
+                    <Link
+                      className=' link content-color'
+                      to='/profile'
+                      onClick={() => setOpen((open) => !open)}
+                    >
                       Profile
                     </Link>
-                    <Link className='link content-color' to='/login'>
-                      Login
-                    </Link>
+                    {isUserLoggedIn ? (
+                      <Link
+                        className='link content-color'
+                        to='/'
+                        onClick={() => {
+                          logOut();
+                          setOpen((open) => !open);
+                        }}
+                      >
+                        Logout
+                      </Link>
+                    ) : (
+                      <Link className='link content-color' to='/login'>
+                        Login
+                      </Link>
+                    )}
                   </div>
                 </div>
               )}

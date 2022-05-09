@@ -1,7 +1,10 @@
 import "./profilePage.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../component";
 
 const ProfilePage = () => {
+  const { userData } = useAuth();
+  console.log(userData);
   return (
     <div className='profile-page'>
       <div className='price-details-container'>
@@ -19,17 +22,17 @@ const ProfilePage = () => {
         <h4>Personal Information</h4>
         <div className='profile-card-flex'>
           <h4 className='m-sm'>First Name:</h4>
-          <p className='m-sm'>adarsh</p>
+          <p className='m-sm'>{userData.firstName}</p>
         </div>
         <div className='divider'></div>
         <div className='profile-card-flex'>
           <h4 className='m-sm'>Last Name:</h4>
-          <p className='m-sm'>balika</p>
+          <p className='m-sm'>{userData.lastName}</p>
         </div>
         <div className='divider'></div>
         <div className='profile-card-flex'>
           <h4 className='m-sm'>Email Id:</h4>
-          <p className='m-sm'>adarshBalika@gmail.com</p>
+          <p className='m-sm'>{userData.email}</p>
         </div>
       </div>
     </div>
