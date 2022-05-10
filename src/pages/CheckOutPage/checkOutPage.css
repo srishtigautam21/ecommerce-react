@@ -5,9 +5,10 @@
   box-shadow: 7px 7px 5px var(--BOX-SHADOW-LIGHTER);
   padding: 3rem;
   text-align: center;
+  margin: 1.5rem;
 }
 .checkout-page {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +37,7 @@
 }
 .coupan-pd {
   padding: 7px;
-  color: var(--COLOR-WHITE);
+  color: var(--COLOR-BLACK);
 }
 .left-text {
   text-align: left;
@@ -48,7 +49,3 @@
 .item-width {
   width: 12rem;
 }
-/* .s-width {
-}
-.qty-width {
-} */

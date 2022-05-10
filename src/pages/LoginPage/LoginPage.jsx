@@ -54,7 +54,7 @@ const LoginPage = () => {
             />
             Remember Me
           </label>
-          {/* <p className='red-color forgot-psswrd-margin'>Forgot Password?</p> */}
+
           <p
             onClick={() => {
               setLoginUser((prev) => ({
@@ -74,7 +74,7 @@ const LoginPage = () => {
           className='button login-button'
           onClick={(e) => {
             e.preventDefault();
-            loginHandler(e, email, password);
+
             if (email != "" || password != "") {
               loginHandler(email, password);
               setLoginUser({ email: "", password: "" });

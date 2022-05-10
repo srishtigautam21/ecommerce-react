@@ -1,6 +1,6 @@
 import "./orderDetailsCard.css";
 
-const OrderDetailsCard = ({ product, priceCard, index }) => {
+const OrderDetailsCard = ({ product, index }) => {
   //   const priceCard = cartlistitem.reduce(
   //     (acc, currCard) => ({
   //       ...acc,

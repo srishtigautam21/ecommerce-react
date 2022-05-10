@@ -1,10 +1,8 @@
 import "./horizontalCard.css";
 import { Link } from "react-router-dom";
-// import { useCart } from "../../component";
 
 const PriceCard = ({ state }) => {
   const { cartlistitem } = state;
-  // const { priceCard } = useCart();
 
   const initialPriceState = {
     qty: 0,
@@ -24,6 +22,7 @@ const PriceCard = ({ state }) => {
     }),
     initialPriceState
   );
+  console.log(priceCard.discount);
   const deliveryCost = priceCard.price < 1000 ? 100 : 0;
   const priceAfterDiscount = priceCard.price + deliveryCost;
 

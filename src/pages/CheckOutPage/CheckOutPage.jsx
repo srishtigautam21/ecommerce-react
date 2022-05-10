@@ -1,11 +1,16 @@
 import "./checkOutPage.css";
 import { useCart, OrderDetailsCard } from "../../component";
 import { useState } from "react";
+import { orderSuccessToast } from "../../utility/Toastify";
+import { useNavigate } from "react-router-dom";
+
 const CheckOutPage = () => {
+  const navigate = useNavigate();
   const { state } = useCart();
   const { cartlistitem } = state;
   const [coupan, setCoupan] = useState("");
   const [isCorrectCoupan, setIsCorrectCoupan] = useState(false);
+
   const checkCoupan = (coupan) => {
     if (coupan === "nurish50") {
       setIsCorrectCoupan(true);
@@ -30,7 +35,8 @@ const CheckOutPage = () => {
     }),
     initialPriceState
   );
-  const coupanCost = priceCard.price * 0.5;
+
+  const coupanCost = Number(priceCard.price * 0.5);
   const deliveryCost = priceCard.price < 1000 ? 100 : 0;
   const priceAfterDiscount = priceCard.price + deliveryCost;
   return (
@@ -97,14 +103,32 @@ const CheckOutPage = () => {
         </div>
         <div className='order-card-flex-1'>
           <div className='order-header'>Coupon discount</div>
-          <div className='order-header'>-{coupanCost}</div>
+          {isCorrectCoupan ? (
+            <div className='order-header'>-{coupanCost}</div>
+          ) : (
+            <div className='order-header'>-0</div>
+          )}
         </div>
         <div className='divider'></div>
         <div className='order-card-flex-1'>
           <div className='order-header'>Grand Total</div>
-          <div className='order-header'>{priceCard.price - coupanCost}</div>
+          {isCorrectCoupan ? (
+            <div className='order-header'>
+              {priceCard.price - coupanCost + deliveryCost}
+            </div>
+          ) : (
+            <div className='order-header'>
+              {priceCard.price - 0 + deliveryCost}
+            </div>
+          )}
         </div>
-        <button className='button card-button ecom-card-button'>
+        <button
+          className='button card-button ecom-card-button'
+          onClick={() => {
+            orderSuccessToast("Order has been placed succesfully");
+            navigate("/products");
+          }}
+        >
           Place Order
         </button>
       </div>

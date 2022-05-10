@@ -17,18 +17,15 @@ const AuthProvider = ({ children }) => {
     email: "",
     password: "",
   });
-  // email: "adarshbalika@gmail.com",
-  // password: "adarshbalika",
+
   const [signupUser, setSignUpUser] = useState(authInitialState);
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
   const [error, setError] = useState("noerror");
 
-  const loginHandler = async (e, email, password) => {
-    e.preventDefault();
+  const loginHandler = async (email, password) => {
     try {
       const response = await axios.post("/api/auth/login", { email, password });
-
       localStorage.setItem("nurishToken", response.data.encodedToken);
       setUserData(response.data.foundUser);
       setUserLoggedIn(true);
@@ -38,12 +35,9 @@ const AuthProvider = ({ children }) => {
       }, 200);
     } catch (e) {
       setError(e.response.data.errors[0]);
-      // console.error(e);
       errorToast("Invalid email or password");
     }
   };
-  // someUserAttribute1,
-  // someUserAttribute2
   const signUpHandler = async (e, email, password, firstName, lastName) => {
     e.preventDefault();
     try {
@@ -54,20 +48,11 @@ const AuthProvider = ({ children }) => {
         lastName,
       });
       localStorage.setItem("nurishToken", response.data.encodedToken);
-      // console.log(response.data.encodedToken);
-      // console.log(response.data.createdUser.email);
+
       const signUpData = response.data.createdUser;
       setUserData(signUpData);
       navigate("/login");
-      // setUserData()
-      // setProfileData({
-      //   email: signUpData.email,
-      //   firstName: signUpData.someUserAttribute1,
-      //   lastName: signUpData.someUserAttribute2,
-      //   password: signUpData.password,
-      // });
     } catch (e) {
-      // console.error(e);
       setError(e.response.data.errors);
     }
   };
