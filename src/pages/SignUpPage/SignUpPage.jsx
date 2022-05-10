@@ -70,7 +70,6 @@ const SignUpPage = () => {
               setError("noerror");
               setSignUpUser((prev) => ({ ...prev, password: e.target.value }));
             }}
-            // onFocus={() => setError("noerror")}
             required
           />
 

@@ -1,19 +1,6 @@
 import "./orderDetailsCard.css";
 
 const OrderDetailsCard = ({ product, index }) => {
-  //   const priceCard = cartlistitem.reduce(
-  //     (acc, currCard) => ({
-  //       ...acc,
-  //       qty: acc.qty + currCard.qty,
-  //       price: acc.price + currCard.price * currCard.qty,
-  //       discount: currCard.discount
-  //         ? acc.discount +
-  //           (currCard.priceBeforeDiscount - currCard.price) * currCard.qty
-  //         : 0,
-  //     }),
-  //     initialPriceState
-  //   );
-
   return (
     <>
       <div className='order-card-flex-1'>

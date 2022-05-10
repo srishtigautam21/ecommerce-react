@@ -87,13 +87,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='list-style icons-alignment lg-margin-top'>
-            {/* <Link className='link ecom-link-color' to='/login'> */}
             <div className='dropdown'>
               <UserIcon
                 className='nav-icons'
                 onClick={() => setOpen((open) => !open)}
               />
-              {/* </Link> */}
+
               {open && (
                 <div className='menu-container'>
                   <div className='menu-content'>

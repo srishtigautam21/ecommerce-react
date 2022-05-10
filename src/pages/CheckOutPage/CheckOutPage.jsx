@@ -8,11 +8,11 @@ const CheckOutPage = () => {
   const navigate = useNavigate();
   const { state } = useCart();
   const { cartlistitem } = state;
-  const [coupan, setCoupan] = useState("");
+  const [coupon, setCoupon] = useState("");
   const [isCorrectCoupan, setIsCorrectCoupan] = useState(false);
 
-  const checkCoupan = (coupan) => {
-    if (coupan === "nurish50") {
+  const checkCoupan = (coupon) => {
+    if (coupon === "nurish50") {
       setIsCorrectCoupan(true);
     } else {
       setIsCorrectCoupan(false);
@@ -35,7 +35,9 @@ const CheckOutPage = () => {
     }),
     initialPriceState
   );
-
+  const cartEmpty = (cartlistitem) => {
+    cartlistitem.length = 0;
+  };
   const coupanCost = Number(priceCard.price * 0.5);
   const deliveryCost = priceCard.price < 1000 ? 100 : 0;
   const priceAfterDiscount = priceCard.price + deliveryCost;
@@ -77,14 +79,14 @@ const CheckOutPage = () => {
             <div className='order-card-flex-1'>
               <input
                 type='text'
-                value={coupan}
-                onChange={(e) => setCoupan(e.target.value)}
+                value={coupon}
+                onChange={(e) => setCoupon(e.target.value)}
                 className='coupan-pd coupan-input'
               />
 
               <button
                 className='coupan-btn coupan-pd'
-                onClick={() => checkCoupan(coupan)}
+                onClick={() => checkCoupan(coupon)}
               >
                 Apply
               </button>
@@ -126,6 +128,7 @@ const CheckOutPage = () => {
           className='button card-button ecom-card-button'
           onClick={() => {
             orderSuccessToast("Order has been placed succesfully");
+            cartEmpty(cartlistitem);
             navigate("/products");
           }}
         >

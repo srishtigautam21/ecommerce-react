@@ -22,7 +22,7 @@ const PriceCard = ({ state }) => {
     }),
     initialPriceState
   );
-  console.log(priceCard.discount);
+
   const deliveryCost = priceCard.price < 1000 ? 100 : 0;
   const priceAfterDiscount = priceCard.price + deliveryCost;
 
