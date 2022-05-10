@@ -1,0 +1,30 @@
+.profile-page {
+  display: flex;
+  min-height: 90vh;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  gap: 4rem;
+  /* width: 100%; */
+}
+.profile-container {
+  width: 60%;
+  height: 40vh;
+  background-color: var(--COLOR-WHITE);
+  box-shadow: 7px 7px 5px var(--BOX-SHADOW-LIGHTER);
+  padding: 3rem;
+  text-align: center;
+}
+.profile-card-flex {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 2rem 1rem 2rem;
+}
+.link-color {
+  font-weight: 500;
+  color: var(--COLOR-SOCIAL-ICON);
+}
+.link-color:hover {
+  color: var(--NOTIFICATION-COLOR);
+  cursor: pointer;
+}

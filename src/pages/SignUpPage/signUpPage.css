@@ -4,3 +4,8 @@
 .color-green {
   color: var(--PRIMARY-HOVER);
 }
+.error {
+  color: var(--ALERT-ERROR-COLOR);
+  text-align: center;
+  font-weight: 500;
+}

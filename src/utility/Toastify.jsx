@@ -44,6 +44,12 @@ const errorToast = (text) => {
     hideProgressBar: false,
   });
 };
+const orderSuccessToast = (text) => {
+  toast.success(text, {
+    position: "top-right",
+    autoClose: 1500,
+  });
+};
 
 export {
   loginToast,
@@ -52,4 +58,5 @@ export {
   addToCartToast,
   deleteFromCartToast,
   errorToast,
+  orderSuccessToast,
 };

@@ -56,3 +56,8 @@
   width: 29rem;
   margin: 2rem 1rem 2rem 0;
 }
+.test-login {
+  color: var(--LINK);
+  text-decoration: underline;
+  cursor: pointer;
+}
