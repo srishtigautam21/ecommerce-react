@@ -8,6 +8,8 @@ import {
   LoginPage,
   SignUpPage,
   Page404,
+  ProfilePage,
+  CheckOutPage,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -26,6 +28,8 @@ function App() {
         <Route path='/cart' element={<CartPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignUpPage />} />
+        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/checkout' element={<CheckOutPage />} />
         <Route path='/mockman' element={<Mockman />} />
         <Route path='*' element={<Page404 />} />
       </Routes>

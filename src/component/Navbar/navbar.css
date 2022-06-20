@@ -45,3 +45,26 @@
 .ecom-badge-wrapper {
   position: relative;
 }
+.dropdown {
+  position: relative;
+}
+.menu-container {
+  width: 8vw;
+  min-height: 8vh;
+  background-color: var(--darkerofseconadary);
+  position: absolute;
+  right: 0;
+
+  border-radius: 1rem;
+  padding: 7px;
+  z-index: 500;
+}
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.content-color {
+  color: var(--NOTIFICATION-COLOR);
+}

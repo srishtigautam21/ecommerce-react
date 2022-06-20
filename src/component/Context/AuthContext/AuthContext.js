@@ -14,44 +14,51 @@ const AuthProvider = ({ children }) => {
     password: "",
   };
   const [loginUser, setLoginUser] = useState({
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
+    email: "",
+    password: "",
   });
+
   const [signupUser, setSignUpUser] = useState(authInitialState);
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({});
+  const [error, setError] = useState("noerror");
 
-  const loginHandler = async (e, email, password) => {
-    e.preventDefault();
-
+  const loginHandler = async (email, password) => {
     try {
       const response = await axios.post("/api/auth/login", { email, password });
-
       localStorage.setItem("nurishToken", response.data.encodedToken);
-
+      setUserData(response.data.foundUser);
       setUserLoggedIn(true);
-
       loginToast("Login Successful");
       setTimeout(() => {
         navigate("/products");
       }, 200);
     } catch (e) {
-      console.error(e);
+      setError(e.response.data.errors[0]);
       errorToast("Invalid email or password");
     }
   };
-
-  const signUpHandler = async () => {
+  const signUpHandler = async (e, email, password, firstName, lastName) => {
+    e.preventDefault();
     try {
       const response = await axios.post("/api/auth/signup", {
-        firstName,
-        lastName,
         email,
         password,
+        firstName,
+        lastName,
       });
       localStorage.setItem("nurishToken", response.data.encodedToken);
+
+      const signUpData = response.data.createdUser;
+      setUserData(signUpData);
+      navigate("/login");
     } catch (e) {
-      console.error(e);
+      setError(e.response.data.errors);
     }
+  };
+  const logOut = () => {
+    localStorage.clear();
+    setUserLoggedIn(false);
   };
 
   return (
@@ -62,6 +69,13 @@ const AuthProvider = ({ children }) => {
         loginUser,
         isUserLoggedIn,
         signUpHandler,
+        signupUser,
+        setSignUpUser,
+        authInitialState,
+        userData,
+        error,
+        setError,
+        logOut,
       }}
     >
       {children}
