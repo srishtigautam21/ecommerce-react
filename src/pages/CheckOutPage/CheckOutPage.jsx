@@ -1,6 +1,6 @@
 import "./checkOutPage.css";
 import { useCart, OrderDetailsCard } from "../../component";
-// import { useState } from "react";
+
 import { orderSuccessToast } from "../../utility/Toastify";
 import { useNavigate } from "react-router-dom";
 import { usePrice } from "../../component";

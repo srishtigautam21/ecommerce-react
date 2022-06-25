@@ -18,8 +18,8 @@ const OrderPage = () => {
           Profile
         </Link>
 
-        <div className='divider'></div>
-        <p>Address</p>
+        {/* <div className='divider'></div>
+        <p>Address</p> */}
         <div className='divider'></div>
         <Link className='link link-color' to='/orders'>
           My Orders
