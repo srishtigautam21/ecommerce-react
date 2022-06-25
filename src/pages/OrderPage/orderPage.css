@@ -6,3 +6,9 @@
   padding: 3rem;
   text-align: center;
 }
+.total-amount {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.8rem;
+}

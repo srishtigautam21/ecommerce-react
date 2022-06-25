@@ -7,8 +7,9 @@
 .orders-image {
   border-bottom-left-radius: 1rem;
   border-top-left-radius: 1rem;
-  width: 14rem;
+  /* width: 14rem; */
   height: 9.5rem;
+  object-fit: cover;
 }
 .small-horizonrtal-card-content {
   padding: 1rem;

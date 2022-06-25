@@ -1,6 +1,8 @@
 import "./orderCard.css";
+import { usePrice } from "../index";
 
 const OrdersCard = ({ item }) => {
+  const { totalAmount } = usePrice();
   return (
     <div className='small-horizontal-card'>
       <img
@@ -12,9 +14,6 @@ const OrdersCard = ({ item }) => {
         <div className='order-item-header'>{item.shortName}</div>
         <div className='order-text'>Quantity: {item.qty}</div>
         <div className='order-text'>Price: {item.price * item.qty}</div>
-      </div>
-      <div className='total-amount'>
-        <div>{}</div>
       </div>
     </div>
   );
