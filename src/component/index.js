@@ -13,6 +13,7 @@ import { CartProvider, useCart } from "./Context/CartContext/CartContext";
 import { PriceCard } from "./Card/PriceCard";
 import { AuthProvider, useAuth } from "./Context/AuthContext/AuthContext";
 import { OrderDetailsCard } from "./Card/OrderDetailsCard";
+import { OrdersCard } from "./Card/OrdersCard";
 
 export {
   Navbar,
@@ -31,4 +32,5 @@ export {
   AuthProvider,
   useAuth,
   OrderDetailsCard,
+  OrdersCard,
 };

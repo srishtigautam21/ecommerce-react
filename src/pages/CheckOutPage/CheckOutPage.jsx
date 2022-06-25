@@ -128,8 +128,8 @@ const CheckOutPage = () => {
           className='button card-button ecom-card-button'
           onClick={() => {
             orderSuccessToast("Order has been placed succesfully");
-            cartEmpty(cartlistitem);
-            navigate("/products");
+            navigate("/orders");
+            // cartEmpty(cartlistitem);
           }}
         >
           Place Order

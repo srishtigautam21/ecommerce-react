@@ -1,0 +1,26 @@
+.small-horizontal-card {
+  display: flex;
+  border: 1px solid var(--BOX-SHADOW);
+  border-radius: 1rem;
+  margin: 1rem;
+}
+.orders-image {
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  width: 14rem;
+  height: 9.5rem;
+}
+.small-horizonrtal-card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.order-text {
+  text-align: start;
+}
+.order-item-header {
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
