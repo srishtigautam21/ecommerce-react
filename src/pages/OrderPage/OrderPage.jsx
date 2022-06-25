@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../../component";
-import { OrdersCard } from "../../component";
+import { useCart, OrdersCard } from "../../component";
+
 import "./orderPage.css";
 import { usePrice } from "../../component/index";
 
@@ -18,8 +18,6 @@ const OrderPage = () => {
           Profile
         </Link>
 
-        {/* <div className='divider'></div>
-        <p>Address</p> */}
         <div className='divider'></div>
         <Link className='link link-color' to='/orders'>
           My Orders
