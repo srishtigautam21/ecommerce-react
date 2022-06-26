@@ -10,6 +10,7 @@ import {
   Page404,
   ProfilePage,
   CheckOutPage,
+  OrderPage,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -29,6 +30,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/orders' element={<OrderPage />} />
         <Route path='/checkout' element={<CheckOutPage />} />
         <Route path='/mockman' element={<Mockman />} />
         <Route path='*' element={<Page404 />} />

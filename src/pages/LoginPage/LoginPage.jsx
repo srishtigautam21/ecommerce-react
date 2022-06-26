@@ -59,9 +59,9 @@ const LoginPage = () => {
             onClick={() => {
               setLoginUser((prev) => ({
                 ...prev,
-                email: "adarshbalika@gmail.com",
+                email: "testuser@nurish.com",
               }));
-              setLoginUser((prev) => ({ ...prev, password: "adarshbalika" }));
+              setLoginUser((prev) => ({ ...prev, password: "nurish12345" }));
             }}
             className='test-login forgot-psswrd-margin'
           >

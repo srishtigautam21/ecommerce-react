@@ -7,20 +7,20 @@ const ProfilePage = () => {
 
   return (
     <div className='profile-page'>
-      {/* Future TODOs */}
-
-      {/* <div className='price-details-container'>
+      <div className='price-details-container'>
         <h3>Account Details</h3>
         <div className='divider'></div>
         <Link className='link link-color' to='/profile'>
           Profile
-        </Link> */}
+        </Link>
 
-      {/* <div className='divider'></div>
-        <p>Address</p> */}
-      {/* <div className='divider'></div>
-        <p>My Orders</p> */}
-      {/* </div> */}
+        <div className='divider'></div>
+        <p>Address</p>
+        <div className='divider'></div>
+        <Link className='link link-color' to='/orders'>
+          My Orders
+        </Link>
+      </div>
 
       <div className=' profile-container'>
         <h4>Personal Information</h4>
