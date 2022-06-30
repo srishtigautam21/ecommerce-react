@@ -27,7 +27,7 @@ const OrderProvider = ({ children }) => {
         { order: order },
         config
       );
-      //   console.log(response.data.orders);
+
       setMyOrder(response.data.orders);
     } catch (e) {
       console.log(e);

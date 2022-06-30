@@ -23,9 +23,7 @@ const CheckOutPage = () => {
     cartEmpty,
     totalAmount,
   } = usePrice();
-  // const totalAmount = isCorrectCoupan
-  //   ? priceCard.price - coupanCost + deliveryCost
-  //   : priceCard.price - 0 + deliveryCost;
+
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -66,12 +64,12 @@ const CheckOutPage = () => {
               price: item.price,
             })),
             amount: totalAmount,
-            // address: defaultAddress.address,
+
             paymentId: response.razorpay_payment_id,
           };
           console.log("success");
           placeOrder(order);
-          // cartEmpty();
+
           (cartlistitem.length = 0), setCoupon("");
           setIsCorrectCoupan(false);
           orderSuccessToast("Order has been placed succesfully");
@@ -79,7 +77,6 @@ const CheckOutPage = () => {
         }
       },
       prefill: {
-        // name: defaultAddress.firstName,
         name: userData.firstName,
         email: userData.email,
         contact: 99999000,
@@ -172,9 +169,6 @@ const CheckOutPage = () => {
         <button
           className='button card-button ecom-card-button'
           onClick={() => {
-            // orderSuccessToast("Order has been placed succesfully");
-            // navigate("/orders");
-            // cartEmpty(cartlistitem);
             placeOrderHandler(totalAmount);
           }}
         >
