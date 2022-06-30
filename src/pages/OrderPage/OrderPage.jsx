@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-import { useCart, OrdersCard } from "../../component";
-
+import { useCart, OrdersCard, useOrder } from "../../component";
 import "./orderPage.css";
 import { usePrice } from "../../component/index";
 
 const OrderPage = () => {
-  const { state } = useCart();
-  const { cartlistitem } = state;
-  const orderListItems = [...cartlistitem];
   const { totalAmount } = usePrice();
+  const { myOrder } = useOrder();
+
   return (
     <div className='profile-page'>
       <div className='price-details-container'>
@@ -27,11 +25,11 @@ const OrderPage = () => {
       <div className='orders-container'>
         <h4>My Orders</h4>
         <div className='divider'></div>
-        {orderListItems.map((item) => (
-          <OrdersCard key={item._id} item={item} />
+        {myOrder.map((order, index) => (
+          <OrdersCard key={index} arrayOfItem={order.items} />
         ))}
         <div className='total-amount'>
-          {orderListItems.length === 0 ? (
+          {myOrder.length === 0 ? (
             <div>
               No orders yet.Check out <Link to='/products'>products.</Link>
             </div>

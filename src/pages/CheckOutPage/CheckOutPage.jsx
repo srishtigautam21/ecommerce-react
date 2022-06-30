@@ -1,6 +1,5 @@
 import "./checkOutPage.css";
-import { useCart, OrderDetailsCard } from "../../component";
-
+import { useCart, OrderDetailsCard, useAuth, useOrder } from "../../component";
 import { orderSuccessToast } from "../../utility/Toastify";
 import { useNavigate } from "react-router-dom";
 import { usePrice } from "../../component";
@@ -9,6 +8,8 @@ const CheckOutPage = () => {
   const navigate = useNavigate();
   const { state } = useCart();
   const { cartlistitem } = state;
+  const { userData } = useAuth();
+  const { placeOrder } = useOrder();
   const {
     coupon,
     setCoupon,
@@ -22,6 +23,69 @@ const CheckOutPage = () => {
     cartEmpty,
     totalAmount,
   } = usePrice();
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  const placeOrderHandler = async (totalAmount) => {
+    const res = await initializeRazorpay();
+
+    if (!res) {
+      errorToast("Some Unwanted error occured");
+      return;
+    }
+
+    const options = {
+      key: "rzp_test_07hAh0N3disI2n",
+      currency: "INR",
+      amount: totalAmount * 100,
+      name: "nurish",
+      description: "An e-commerce application for healthy groceries",
+      handler: function (response) {
+        if (response && response.razorpay_payment_id) {
+          const order = {
+            items: cartlistitem.map((item) => ({
+              qty: item.qty,
+              name: item.shortName,
+              image: item.smallImage,
+              price: item.price,
+            })),
+            amount: totalAmount,
+
+            paymentId: response.razorpay_payment_id,
+          };
+          console.log("success");
+          placeOrder(order);
+
+          (cartlistitem.length = 0), setCoupon("");
+          setIsCorrectCoupan(false);
+          orderSuccessToast("Order has been placed succesfully");
+          navigate("/orders");
+        }
+      },
+      prefill: {
+        name: userData.firstName,
+        email: userData.email,
+        contact: 99999000,
+        method: "netbanking",
+      },
+    };
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
 
   return (
     <div className='checkout-page'>
@@ -97,21 +161,15 @@ const CheckOutPage = () => {
         <div className='order-card-flex-1'>
           <div className='order-header'>Grand Total</div>
           {isCorrectCoupan ? (
-            <div className='order-header'>
-              {priceCard.price - coupanCost + deliveryCost}
-            </div>
+            <div className='order-header'>{totalAmount}</div>
           ) : (
-            <div className='order-header'>
-              {priceCard.price - 0 + deliveryCost}
-            </div>
+            <div className='order-header'>{totalAmount}</div>
           )}
         </div>
         <button
           className='button card-button ecom-card-button'
           onClick={() => {
-            orderSuccessToast("Order has been placed succesfully");
-            navigate("/orders");
-            // cartEmpty(cartlistitem);
+            placeOrderHandler(totalAmount);
           }}
         >
           Place Order
