@@ -11,6 +11,7 @@ import {
   CardProvider,
   AuthProvider,
   PriceProvider,
+  OrderProvider,
 } from "./component";
 
 // Call make Server
@@ -24,7 +25,9 @@ ReactDOM.render(
           <WishListProvider>
             <CartProvider>
               <PriceProvider>
-                <App />
+                <OrderProvider>
+                  <App />
+                </OrderProvider>
               </PriceProvider>
             </CartProvider>
           </WishListProvider>
