@@ -1,6 +1,5 @@
 import { useWishList, useCart } from "../index";
 import "./horizontalCard.css";
-import { wishListToast } from "../../utility/Toastify";
 
 const CartPageCard = ({ product, dispatch, state }) => {
   const { cartCount, cartlistitem, productCount } = state;

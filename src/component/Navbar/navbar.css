@@ -16,7 +16,7 @@
 }
 .ecom-input {
   max-width: 100%;
-  /* max-width: 25rem; */
+
   width: 100%;
 }
 .input-update {
@@ -36,6 +36,14 @@
 }
 .lg-margin-top {
   margin-top: 4.5rem;
+}
+.content-header {
+  font-size: 4.3rem;
+  font-weight: 700;
+  /* line-height: 6.4rem; */
+  letter-spacing: 1px;
+  color: var(--COLOR-BLACK);
+  /* margin-bottom: 1rem; */
 }
 /* CSS for badge alignment */
 .icon-over-badge {
@@ -67,4 +75,9 @@
 }
 .content-color {
   color: var(--NOTIFICATION-COLOR);
+}
+@media only screen and (max-width: 610px) {
+  .content-header-responsive {
+    font-size: 3rem;
+  }
 }

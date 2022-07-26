@@ -24,13 +24,13 @@ const Navbar = () => {
   return (
     <div>
       <nav className='nav-component nav-padding'>
-        <div className='content-header'>
+        <div className='content-header content-header-responsive'>
           <Link className='component-libraryl-link' to='/'>
             nurish
           </Link>
           <img src={Logo} alt='logo' />
         </div>
-        <div className='search-bar'>
+        {/* <div className='search-bar'>
           <input
             className='input-update ecom-input'
             placeholder='Type to search'
@@ -39,7 +39,7 @@ const Navbar = () => {
           <button className='search-btn'>
             <SearchIcon />
           </button>
-        </div>
+        </div> */}
         <ul className='nav-list-items-flex'>
           <li className='list-style link-alignment home-alignment'>
             <Link className='link ecom-link-color' to='/'>
