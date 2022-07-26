@@ -12,6 +12,7 @@ import {
   CheckOutPage,
   OrderPage,
 } from "./pages";
+import { RequireAuth } from "./utility/RequireAuth";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "./toastify.css";
@@ -25,14 +26,50 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/products' element={<ProductPage />} />
-        <Route path='/wishlist' element={<WishList />} />
-        <Route path='/cart' element={<CartPage />} />
+
+        <Route
+          path='/wishlist'
+          element={
+            <RequireAuth>
+              <WishList />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/cart'
+          element={
+            <RequireAuth>
+              <CartPage />
+            </RequireAuth>
+          }
+        />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignUpPage />} />
-        <Route path='/profile' element={<ProfilePage />} />
-        <Route path='/orders' element={<OrderPage />} />
-        <Route path='/checkout' element={<CheckOutPage />} />
-        <Route path='/mockman' element={<Mockman />} />
+        <Route
+          path='/profile'
+          element={
+            <RequireAuth>
+              <ProfilePage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/orders'
+          element={
+            <RequireAuth>
+              <OrderPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/checkout'
+          element={
+            <RequireAuth>
+              <CheckOutPage />
+            </RequireAuth>
+          }
+        />
+
         <Route path='*' element={<Page404 />} />
       </Routes>
       <Footer />
