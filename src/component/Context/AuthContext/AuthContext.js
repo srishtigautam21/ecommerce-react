@@ -1,12 +1,14 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { loginToast, errorToast } from "../../../utility/Toastify";
 
 const AuthContext = createContext("");
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const authInitialState = {
     firstName: "",
     lastName: "",
@@ -31,7 +33,7 @@ const AuthProvider = ({ children }) => {
       setUserLoggedIn(true);
       loginToast("Login Successful");
       setTimeout(() => {
-        navigate("/products");
+        navigate(from, { replace: true });
       }, 200);
     } catch (e) {
       setError(e.response.data.errors[0]);
