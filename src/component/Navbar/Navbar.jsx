@@ -35,7 +35,6 @@ const Navbar = () => {
             className='input-update ecom-input'
             placeholder='Type to search'
           />
-
           <button className='search-btn'>
             <SearchIcon />
           </button>
@@ -115,7 +114,11 @@ const Navbar = () => {
                         Logout
                       </Link>
                     ) : (
-                      <Link className='link content-color' to='/login'>
+                      <Link
+                        className='link content-color'
+                        to='/login'
+                        onClick={() => setOpen((open) => !open)}
+                      >
                         Login
                       </Link>
                     )}
