@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useWishList, useCart, useCard, useAuth } from "../index";
 import "./card.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Card = ({ product }) => {
   const {
@@ -14,6 +15,8 @@ const Card = ({ product }) => {
   const { cartlistitem } = state;
   const { wishlistitem } = wishListState;
   const { isUserLoggedIn } = useAuth();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const isInCart = cartlistitem.findIndex((prod) => prod._id === product._id);
   const isInWishList = wishlistitem.findIndex(
@@ -88,11 +91,18 @@ const Card = ({ product }) => {
               </Link>
             )
           ) : (
-            <Link to='/login'>
-              <button className='button card-button ecom-card-button'>
-                Add To Cart
-              </button>
-            </Link>
+            <button
+              className='button card-button ecom-card-button'
+              onClick={() =>
+                navigate(
+                  "/login",
+                  { state: { from: { pathname: pathname } } },
+                  { replace: true }
+                )
+              }
+            >
+              Add To Cart
+            </button>
           )}
 
           {isOutOfStock && (
