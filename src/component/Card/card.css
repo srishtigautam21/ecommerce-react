@@ -51,3 +51,6 @@
   cursor: pointer;
   color: var(--ALERT-ERROR-COLOR);
 }
+.disabled-btn {
+  cursor: not-allowed;
+}

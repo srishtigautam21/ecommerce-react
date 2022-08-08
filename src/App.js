@@ -1,5 +1,5 @@
 import "./App.css";
-import { Navbar, Footer } from "./component";
+import { Navbar, Footer, Loading } from "./component";
 import {
   HomePage,
   ProductPage,
@@ -12,6 +12,7 @@ import {
   CheckOutPage,
   OrderPage,
 } from "./pages";
+
 import { RequireAuth } from "./utility/RequireAuth";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -23,6 +24,7 @@ function App() {
     <div className='App'>
       <Navbar />
       <ToastContainer />
+      <Loading />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/products' element={<ProductPage />} />

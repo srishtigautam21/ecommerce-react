@@ -9,6 +9,7 @@ import {
 const WishListContext = createContext({});
 
 const WishListProvider = ({ children }) => {
+  const [addToWishListApiLoading, setAddToWishListApiLoading] = useState(false);
   const wishListReducer = (wishListState, action) => {
     switch (action.type) {
       case "ADD_TO_WISHLIST":
@@ -31,6 +32,7 @@ const WishListProvider = ({ children }) => {
   });
 
   const addToWishListApi = async (product) => {
+    setAddToWishListApiLoading(true);
     const encodedToken = localStorage.getItem("nurishToken");
     const config = {
       headers: {
@@ -43,13 +45,12 @@ const WishListProvider = ({ children }) => {
         { product },
         config
       );
-
       wishListDispatch({
         type: "ADD_TO_WISHLIST",
         payload: response.data.wishlist,
       });
-
       addToWishListToast("Added to WishList");
+      setAddToWishListApiLoading(false);
     } catch (e) {
       console.error(e);
       errorToast("Some Unwanted error occured");
@@ -85,6 +86,7 @@ const WishListProvider = ({ children }) => {
         wishListState,
         addToWishListApi,
         removeFromWishListApi,
+        addToWishListApiLoading,
       }}
     >
       {children}

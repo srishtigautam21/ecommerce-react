@@ -33,7 +33,6 @@ const OrderProvider = ({ children }) => {
       console.log(e);
     }
   };
-  console.log("in context", myOrder);
 
   useEffect(() => {
     isUserLoggedIn && getOrder();

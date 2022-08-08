@@ -1,4 +1,10 @@
-import { useContext, createContext, useReducer, useEffect } from "react";
+import {
+  useContext,
+  createContext,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 import { useWishList, useCard } from "../../index";
 import axios from "axios";
 import {
@@ -12,6 +18,7 @@ const CartContext = createContext({});
 const CartProvider = ({ children }) => {
   const { setWishList, wishlist } = useWishList();
   const { products } = useCard();
+  const [addToCartLoading, setAddToCartLoading] = useState(false);
 
   const cartReducer = (state, action) => {
     switch (action.type) {
@@ -57,6 +64,7 @@ const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, cartObj);
 
   const addToCart = async (product) => {
+    setAddToCartLoading(true);
     const encodedToken = localStorage.getItem("nurishToken");
     const config = { headers: { authorization: encodedToken } };
     try {
@@ -66,6 +74,7 @@ const CartProvider = ({ children }) => {
         config
       );
       dispatch({ type: "ADD_TO_CART", productCard: response.data.cart });
+      setAddToCartLoading(false);
       addToCartToast("Added To Cart");
     } catch (e) {
       console.error(e);
@@ -134,6 +143,7 @@ const CartProvider = ({ children }) => {
         deleteFromCart,
         increaseQuantity,
         decreaseQuantity,
+        addToCartLoading,
       }}
     >
       {children}
