@@ -1,3 +1,9 @@
+/* .nav-wrapper {
+  z-index: 22;
+  top: 0;
+  position: fixed;
+  width: 100%;
+} */
 .nav-padding {
   padding: 0 2rem 0 2rem;
 }

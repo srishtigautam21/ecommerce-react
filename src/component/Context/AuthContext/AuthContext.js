@@ -32,9 +32,10 @@ const AuthProvider = ({ children }) => {
       setUserData(response.data.foundUser);
       setUserLoggedIn(true);
       loginToast("Login Successful");
-      setTimeout(() => {
-        navigate(from, { replace: true });
-      }, 200);
+
+      // setTimeout(() => {
+      navigate(from, { replace: true });
+      // }, 200);
     } catch (e) {
       setError(e.response.data.errors[0]);
       errorToast("Invalid email or password");

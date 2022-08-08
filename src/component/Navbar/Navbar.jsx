@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className='nav-component nav-padding'>
+      <nav className='nav-wrapper nav-component nav-padding'>
         <div className='content-header content-header-responsive'>
           <Link className='component-libraryl-link' to='/'>
             nurish

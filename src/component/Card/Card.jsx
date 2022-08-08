@@ -9,6 +9,7 @@ const Card = ({ product }) => {
     wishListState,
     removeFromWishListApi,
   } = useWishList();
+
   const { state, dispatch, addToCart } = useCart();
   const { cartlistitem } = state;
   const { wishlistitem } = wishListState;
@@ -66,7 +67,11 @@ const Card = ({ product }) => {
             <span className='xs-margin'>|</span>5
           </div>
           {isUserLoggedIn === true ? (
-            isInCart === -1 ? (
+            isOutOfStock === true ? (
+              <button className='button card-button ecom-card-button disabled-btn'>
+                Add To Cart
+              </button>
+            ) : isInCart === -1 ? (
               <button
                 onClick={() => {
                   addToCartHandler(product);
@@ -99,7 +104,9 @@ const Card = ({ product }) => {
             {newItem === true ? "New" : sale === true ? "Sale" : null}
           </span>
           {isUserLoggedIn === true ? (
-            isInWishList === -1 ? (
+            isOutOfStock === true ? (
+              <i className='fa fa-heart-o icon-size icon-overlay disabled-btn'></i>
+            ) : isInWishList === -1 ? (
               <i
                 className='fa fa-heart-o icon-btn icon-size icon-overlay'
                 onClick={() => addToWishListApi(product)}

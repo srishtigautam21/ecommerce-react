@@ -16,6 +16,7 @@ import { OrderDetailsCard } from "./Card/OrderDetailsCard";
 import { OrdersCard } from "./Card/OrdersCard";
 import { usePrice, PriceProvider } from "./Context/PriceContext/PriceContext";
 import { OrderProvider, useOrder } from "./Context/OrderContext/OrderContext";
+import { Loading } from "./Loading/loading";
 
 export {
   Navbar,
@@ -39,4 +40,5 @@ export {
   PriceProvider,
   OrderProvider,
   useOrder,
+  Loading,
 };
