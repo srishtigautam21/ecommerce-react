@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useCart, OrdersCard, useOrder } from "../../component";
 import "./orderPage.css";
-import { usePrice } from "../../component/index";
 
 const OrderPage = () => {
-  const { totalAmount } = usePrice();
   const { myOrder } = useOrder();
+  const costpriceArr = myOrder.map((order) => order.amount);
+  const totalPrice = costpriceArr.reduce((acc, curr) => acc + curr, 0);
 
   return (
     <div className='profile-page'>
@@ -34,7 +34,7 @@ const OrderPage = () => {
               No orders yet.Check out <Link to='/products'>products.</Link>
             </div>
           ) : (
-            <div>Total Amount : {totalAmount}</div>
+            <div>Total Amount : {totalPrice}</div>
           )}
         </div>
       </div>
